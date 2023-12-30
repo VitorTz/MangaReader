@@ -7,10 +7,10 @@ namespace og {
     
 
 
-    class ReaderScene : public og::Scene {
+    class Reader : public og::Scene {
 
         public:
-            ReaderScene(const og::ChangeScene& changeScene);
+            Reader(const og::ChangeScene& changeScene);
             void update(const double dt) override;
 
     };

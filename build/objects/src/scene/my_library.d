@@ -1,5 +1,5 @@
-build/objects/./src/scene/reader.o: src/scene/reader.cpp \
- src/scene/../../include/scene/reader.hpp \
+build/objects/./src/scene/my_library.o: src/scene/my_library.cpp \
+ src/scene/../../include/scene/my_library.hpp \
  src/scene/../../include/scene/scene.hpp \
  src/scene/../../include/scene/../constants.hpp \
  src/scene/../../include/scene/../colors.hpp \

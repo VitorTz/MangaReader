@@ -16,22 +16,23 @@ og::Window::Window(
             desktop.height / 2 - og::SCREEN_HEIGHT / 2
         )
     );
+    
     this->changeScene = [this](const og::SceneId& sceneId) {
         if (this->scene == nullptr || this->scene->getSceneId() != sceneId) {
             if (this->scene != nullptr) delete this->scene;
             switch (sceneId) {
-                case og::SceneId::Library:
+                case og::SceneId::MyLibraryId:
                     this->scene = new og::MyLibrary(this->changeScene);
                     break;
-                case og::SceneId::Reader:
-                    this->scene = new og::ReaderScene(this->changeScene);
+                case og::SceneId::ReaderId:
+                    this->scene = new og::Reader(this->changeScene);
                     break;
                 default:
                     break;
             }
         }
     };
-
+    
     this->changeScene(og::mainScene);
 
 }
@@ -39,6 +40,7 @@ og::Window::Window(
 
 og::Window::~Window() {
     delete this->scene;
+    og::ImagePool::rmvAll();
 }
 
 

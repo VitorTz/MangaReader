@@ -10,7 +10,6 @@ namespace og {
 
         public:
             MyLibrary(const og::ChangeScene& changeScene);
-            ~MyLibrary();
             void update(const double dt) override;
 
     };

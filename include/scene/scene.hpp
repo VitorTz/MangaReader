@@ -2,16 +2,19 @@
 #define MANGA_READER_SCENE_HPP
 #include <SFML/Graphics.hpp>
 #include <functional>
+#include <map>
+#include "../constants.hpp"
+#include "../components/components.hpp"
 
 
 namespace og {
 
     enum SceneId {
-        Library,
-        Reader
+        MyLibraryId,
+        ReaderId
     };
 
-    const og::SceneId mainScene = og::SceneId::Library;
+    const og::SceneId mainScene = og::SceneId::MyLibraryId;
 
     typedef std::function<void(const og::SceneId&)> ChangeScene;
 
@@ -19,7 +22,13 @@ namespace og {
 
         private:
             const og::SceneId sceneId;
+            std::map<std::string, og::Component*> componentMap;
+        
+        protected:
             const og::ChangeScene& changeScene;
+            void addComponent(og::Component* c);
+            void rmvComponent(const std::string& name);
+            og::Component* getComponent(const std::string& name) const;
 
         public:
             Scene(

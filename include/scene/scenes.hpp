@@ -4,7 +4,7 @@
 
 #include "scene.hpp"
 #include "my_library.hpp"
-#include "reader_scene.hpp"
+#include "reader.hpp"
 
 
 #endif
