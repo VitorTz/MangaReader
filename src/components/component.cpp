@@ -1,42 +1,37 @@
 #include "../../include/components/component.hpp"
 
 
-og::Component::Component(
+
+re::Component::Component(
+    const std::string& name,
+    const re::Transform& t
+) : name(name), transform(t) {
+
+}
+
+
+re::Component::Component(
     const std::string& name
 ) : name(name) {
-    
-}
-
-
-og::Component::Component(
-    const std::string& name,
-    const og::Rect& rect
-) : name(name),
-    rect(rect) {
-
-    }
-
-
-og::Component::~Component() {
 
 }
 
 
-void og::Component::update(const double dt) {
-    return;
+re::Component::~Component() {
+
 }
 
 
-void og::Component::draw(sf::RenderWindow& window) {
-    return;
+void re::Component::update(const double dt) {
+
 }
 
 
-const std::string& og::Component::getName() const {
+void re::Component::draw(sf::RenderWindow& window) {
+
+}
+
+
+const std::string& re::Component::getName() const {
     return this->name;
-}
-
-
-og::Rect& og::Component::getRect() {
-    return this->rect;
 }

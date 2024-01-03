@@ -1,31 +1,32 @@
 #include "../../include/window/window.hpp"
+#include <iostream>
 
 
-og::Window::Window(
+re::Window::Window(
 
 ) : window(
-    sf::VideoMode(og::SCREEN_WIDTH, og::SCREEN_HEIGHT),
-    og::SCREEN_TITLE,
+    sf::VideoMode(re::SCREEN_WIDTH, re::SCREEN_HEIGHT),
+    re::SCREEN_TITLE,
     sf::Style::Close | sf::Style::Titlebar
-), scene(nullptr) {
-    this->window.setFramerateLimit(og::FPS);
-    sf::VideoMode desktop = sf::VideoMode::getDesktopMode();    
-    this->window.setPosition(
-        sf::Vector2i(
-            desktop.width / 2 - og::SCREEN_WIDTH / 2,
-            desktop.height / 2 - og::SCREEN_HEIGHT / 2
-        )
-    );
+) {
+    this->window.setFramerateLimit(re::FPS);
     
-    this->changeScene = [this](const og::SceneId& sceneId) {
+    sf::VideoMode desktop = sf::VideoMode::getDesktopMode();
+    this->window.setPosition(
+        {
+            (int) (desktop.width / 2 - re::SCREEN_WIDTH / 2),
+            (int) (desktop.height / 2 - re::SCREEN_HEIGHT / 2)
+        }
+    );
+
+    re::globals::initGlobals();
+
+    this->changeScene = [this](const re::SceneId& sceneId) {
         if (this->scene == nullptr || this->scene->getSceneId() != sceneId) {
-            if (this->scene != nullptr) delete this->scene;
+            if (this->scene) delete this->scene;
             switch (sceneId) {
-                case og::SceneId::MyLibraryId:
-                    this->scene = new og::MyLibrary(this->changeScene);
-                    break;
-                case og::SceneId::ReaderId:
-                    this->scene = new og::Reader(this->changeScene);
+                case re::SceneId::LibraryId:
+                    this->scene = new re::Library(this->changeScene);
                     break;
                 default:
                     break;
@@ -33,24 +34,18 @@ og::Window::Window(
         }
     };
     
-    this->changeScene(og::mainScene);
+    this->changeScene(re::mainScene);
 
 }
 
 
-og::Window::~Window() {
+re::Window::~Window() {
     delete this->scene;
-    og::ImagePool::rmvAll();
+    re::globals::deleteGlobals();
 }
 
 
-void og::Window::update() {
-    const double dt = this->clock.restart().asSeconds();
-    this->scene->update(dt);
-}
-
-
-void og::Window::handleInput() {
+void re::Window::handleInput() {
     sf::Event e;
     while (this->window.pollEvent(e)) {
         switch (e.type) {
@@ -64,14 +59,20 @@ void og::Window::handleInput() {
 }
 
 
-void og::Window::draw() {
-    this->window.clear(og::SCREEN_COLOR);
+void re::Window::update() {
+    const double dt = this->clock.restart().asSeconds();
+    this->scene->update(dt);
+}
+
+
+void re::Window::draw() {
+    this->window.clear(re::SCREEN_BG_COLOR);
     this->scene->draw(this->window);
     this->window.display();
 }
 
 
-void og::Window::run() {
+void re::Window::run() {
     while (this->window.isOpen()) {
         this->handleInput();
         this->update();

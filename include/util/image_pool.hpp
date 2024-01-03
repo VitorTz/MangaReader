@@ -1,32 +1,26 @@
 #ifndef MANGA_READER_IMAGE_POOL_HPP
 #define MANGA_READER_IMAGE_POOL_HPP
-#include <SFML/Graphics.hpp>
+#include <SFML/Graphics/Texture.hpp>
 #include <map>
+#include <string>
 #include <iostream>
 
 
-namespace og {
-
-    typedef struct ImageSource {
-        sf::Sprite* sprite;
-        sf::Texture* texture;
-    } ImageSource;
+namespace re {
 
 
     class ImagePool {
 
         private:
-            static std::map<std::string, og::ImageSource*> images;
+            static std::map<std::string, sf::Texture*> images;
         
         public:
-            static const og::ImageSource* getImage(const std::string& path);
-            static void rmvImage(const std::string& path);
-            static void rmvAll();
+            static sf::Texture* get(const std::string& s);
+            static void rmv(const std::string& s);
 
     };
     
-} // namespace og
-
+} // namespace re
 
 
 #endif

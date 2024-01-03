@@ -3,8 +3,10 @@
 
 
 #include "component.hpp"
-#include "image.hpp"
-#include "chapter.hpp"
+#include "image_component.hpp"
+#include "chapter_component.hpp"
+#include "manga_component.hpp"
+#include "rect.hpp"
 
 
 #endif

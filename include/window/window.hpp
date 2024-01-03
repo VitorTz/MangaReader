@@ -2,9 +2,12 @@
 #define MANGA_READER_WINDOW_HPP
 #include <SFML/Graphics.hpp>
 #include "../scene/scenes.hpp"
+#include "../constants.hpp"
+#include "../globals.hpp"
 
 
-namespace og {
+namespace re {
+
 
     class Window {
 
@@ -12,14 +15,14 @@ namespace og {
         private:
             sf::RenderWindow window;
             sf::Clock clock;
-            og::ChangeScene changeScene;
-            og::Scene* scene;
+            re::Scene* scene;
+            re::ChangeScene changeScene;
         
         private:
             void handleInput();
             void update();
             void draw();
-        
+
         public:
             Window();
             ~Window();
@@ -27,7 +30,7 @@ namespace og {
 
     };
     
-} // namespace og
+} // namespace reader
 
 
 #endif

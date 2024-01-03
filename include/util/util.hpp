@@ -1,21 +1,19 @@
 #ifndef MANGA_READER_UTIL_HPP
 #define MANGA_READER_UTIL_HPP
+#include <filesystem>
+#include <algorithm>
 #include <string>
 #include <vector>
 #include <cctype>
-#include <algorithm>
-#include <filesystem>
 
 
-namespace og {
+namespace re {
 
-    std::vector<std::string>* getFiles(const std::string& dir);
-    std::vector<std::string>* split(const std::string& s, const char& sep);
-    std::vector<std::string>* split(const std::string& s);
-    double extractNumber(const std::string& s);
-
+    double extractNum(const std::string& s);
+    void split(const std::string& s, const char& sep, std::vector<std::string>& v);
+    void saveMangaSettings();
     
-} // namespace og
+} // namespace re
 
 
 #endif

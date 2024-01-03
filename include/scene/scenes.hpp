@@ -3,8 +3,7 @@
 
 
 #include "scene.hpp"
-#include "my_library.hpp"
-#include "reader.hpp"
+#include "library.hpp"
 
 
 #endif

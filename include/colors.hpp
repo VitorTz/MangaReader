@@ -3,16 +3,18 @@
 #include <SFML/Graphics/Color.hpp>
 
 
-namespace og {
+
+namespace re {
 
     namespace Colors {
 
         const sf::Color GREY_200(41, 42, 43);
+        const sf::Color PINK_200(245, 148, 148);
 
-    } // namespace Colors
+    } // namespace Color
     
     
-} // namespace og
+} // namespace re
 
 
 #endif

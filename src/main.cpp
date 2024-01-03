@@ -2,7 +2,7 @@
 
 
 int main() {
-    og::Window w;
+    re::Window w;
     w.run();
     return 0;
 }

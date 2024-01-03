@@ -1,53 +1,53 @@
 #include "../../include/scene/scene.hpp"
 
 
-
-og::Scene::Scene(
-    const og::SceneId& sceneId,
-    const og::ChangeScene& changeScene
-) : sceneId(sceneId), 
+re::Scene::Scene(
+    const re::SceneId& sceneId,
+    const re::ChangeScene& changeScene
+) : sceneId(sceneId),
     changeScene(changeScene) {
 
     }
 
 
-og::Scene::~Scene() {
-    for (auto& pair : this->componentMap) 
+
+re::Scene::~Scene() {
+    for (const auto& pair : this->componentMap)
         delete pair.second;
 }
 
 
-void og::Scene::update(const double dt) {
-    for (auto& pair : this->componentMap) 
-        pair.second->update(dt);
-}
-
-
-void og::Scene::draw(sf::RenderWindow& window) {
-    for (auto& pair : this->componentMap) 
-        pair.second->draw(window);
-}
-
-
-const og::SceneId& og::Scene::getSceneId() const {
-    return this->sceneId;
-}
-
-
-void og::Scene::addComponent(og::Component* c) {
+void re::Scene::add(re::Component* c) {
     this->componentMap.insert({c->getName(), c});
 }
 
 
-void og::Scene::rmvComponent(const std::string& n) {
-    if (this->componentMap.find(n) != this->componentMap.end()) {
-        og::Component* c = this->componentMap.at(n);
-        this->componentMap.erase(n);
+void re::Scene::rmv(const std::string& s) {
+    if (this->componentMap.find(s) != this->componentMap.end()) {
+        re::Component* c = this->componentMap.at(s);
+        this->componentMap.erase(s);
         delete c;
     }
 }
 
 
-og::Component* og::Scene::getComponent(const std::string& n) const {
-    return this->componentMap.at(n);
+re::Component* re::Scene::get(const std::string& s) {
+    return this->componentMap.at(s);
+}
+
+
+void re::Scene::update(const double dt) {
+    for (const auto& pair : this->componentMap)
+        pair.second->update(dt);
+}
+
+
+void re::Scene::draw(sf::RenderWindow& window) {
+    for (const auto& pair : this->componentMap)
+        pair.second->draw(window);
+}
+
+
+const re::SceneId& re::Scene::getSceneId() const {
+    return this->sceneId;
 }
