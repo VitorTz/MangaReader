@@ -3,7 +3,7 @@
 #include <SFML/Graphics/Font.hpp>
 #include <map>
 #include "../constants.hpp"
-
+#include "../font.hpp"
 
 
 namespace re {

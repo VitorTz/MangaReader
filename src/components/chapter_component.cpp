@@ -11,6 +11,7 @@ re::ChapterComponent::ChapterComponent(
 
 re::ChapterComponent::~ChapterComponent() {
     re::clearPtrVector(this->images);
+    this->chapter->clearImages();
 }
 
 

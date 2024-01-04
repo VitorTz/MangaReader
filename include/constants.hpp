@@ -28,14 +28,6 @@ namespace re {
     const std::string MANGA_SETTINGS_DIR("res/settings");
     const std::string MANGAS_SETTINGS_FILE("res/settings/mangas_settings.txt");
 
-
-    const sf::Keyboard::Key DIRECTION_KEYS[] = {
-        sf::Keyboard::Up,
-        sf::Keyboard::Right,
-        sf::Keyboard::Left,
-        sf::Keyboard::Down
-    };
-
     const sf::Keyboard::Key INTERACTION_KEYS[] = {
         sf::Keyboard::Up,
         sf::Keyboard::Right,
@@ -44,19 +36,6 @@ namespace re {
         sf::Keyboard::F
     };
 
-    enum class FontId {
-        Regular,
-        Light,
-        SemiBold,
-        Bold
-    };
-
-    const std::map<re::FontId, std::string> fontPathById = {
-        {re::FontId::Light, "res/font/Roboto-Thin.ttf"},
-        {re::FontId::Regular, "res/font/Roboto-Regular.ttf"},
-        {re::FontId::SemiBold, "res/font/Roboto-Medium.ttf"},
-        {re::FontId::Bold, "res/font/Roboto-Bold.ttf"}
-    };
     
 } // namespace re
 

@@ -8,7 +8,7 @@ re::Reader::Reader(
         re::globals::mangaByName.at(re::globals::currentMangaName)
     );
     mangaComponent->load();
-    this->add(mangaComponent);
+    this->componentGroup.add(mangaComponent);
 }
 
 

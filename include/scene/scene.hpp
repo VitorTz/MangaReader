@@ -2,6 +2,7 @@
 #define MANGA_READER_SCENE_HPP
 #include <functional>
 #include "../components/components.hpp"
+#include "../util/component_group.hpp"
 
 
 namespace re {
@@ -19,16 +20,16 @@ namespace re {
 
         private:
             const re::SceneId sceneId;
-            std::map<std::string, re::Component*> componentMap;
         
         protected:
             const re::ChangeScene& changeScene;
-            void add(re::Component* c);
-            void rmv(const std::string& s);
-            re::Component* get(const std::string& s);
+            re::ComponentGroup componentGroup;
 
         public:
-            Scene(const re::SceneId& sceneId, const re::ChangeScene& changeScene);
+            Scene(
+                const re::SceneId& sceneId, 
+                const re::ChangeScene& changeScene
+            );
             virtual ~Scene();
             virtual void update(const double& dt);
             virtual void draw(sf::RenderWindow& window);

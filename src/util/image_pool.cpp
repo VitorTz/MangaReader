@@ -18,6 +18,6 @@ void re::ImagePool::rmv(const std::string& s) {
     if (re::ImagePool::images.find(s) != re::ImagePool::images.end()) {
         sf::Texture* t = re::ImagePool::images.at(s);
         re::ImagePool::images.erase(s);
-        delete t;
+        delete t;        
     }
 }

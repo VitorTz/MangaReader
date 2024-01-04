@@ -8,6 +8,7 @@
 #include <cctype>
 #include "../util/font_pool.hpp"
 #include "../constants.hpp"
+#include "../font.hpp"
 
 
 namespace re {

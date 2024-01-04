@@ -7,15 +7,16 @@
 #include <algorithm>
 #include <string>
 #include "../constants.hpp"
+#include "../font.hpp"
+#include "../globals.hpp"
 #include "../util/transform.hpp"
 #include "../util/state.hpp"
-#include "../globals.hpp"
-#include "../model/models.hpp"
-#include "../style/style.hpp"
 #include "../util/util.hpp"
 #include "../util/timer.hpp"
 #include "../util/image_pool.hpp"
 #include "../util/font_pool.hpp"
+#include "../style/style.hpp"
+#include "../model/models.hpp"
 
 
 
