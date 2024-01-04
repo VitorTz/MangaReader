@@ -21,6 +21,10 @@ namespace re {
                 const sf::Vector2f& size,
                 const sf::Vector2f& scale
             );
+            Transform(
+                const sf::Vector2f& pos,
+                const sf::Vector2f& size
+            );
 
             float left() const;
             float right() const;

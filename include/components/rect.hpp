@@ -1,7 +1,5 @@
 #ifndef MANGA_READER_RECT_HPP
 #define MANGA_READER_RECT_HPP
-#include <SFML/Graphics/RectangleShape.hpp>
-#include <SFML/Graphics/Color.hpp>
 #include "component.hpp"
 
 
@@ -14,6 +12,7 @@ namespace re {
             sf::Color color;
         
         public:
+            Rect(const std::string& name);
             Rect(
                 const std::string& name, 
                 const re::Transform& t,
@@ -21,6 +20,9 @@ namespace re {
             );
             Rect(
                 const std::string& name,
+                const sf::Color& color
+            );
+            Rect(
                 const sf::Color& color
             );
             void changeColor(const sf::Color& color);

@@ -19,8 +19,6 @@ re::Window::Window(
         }
     );
 
-    re::globals::initGlobals();
-
     this->changeScene = [this](const re::SceneId& sceneId) {
         if (this->scene == nullptr || this->scene->getSceneId() != sceneId) {
             if (this->scene) delete this->scene;
@@ -28,20 +26,74 @@ re::Window::Window(
                 case re::SceneId::LibraryId:
                     this->scene = new re::Library(this->changeScene);
                     break;
+                case re::SceneId::ReaderId:
+                    this->scene = new re::Reader(this->changeScene);
+                    break;
                 default:
                     break;
             }
         }
     };
     
-    this->changeScene(re::mainScene);
+    this->initWindow();
 
 }
 
 
 re::Window::~Window() {
+    this->close();
+}
+
+
+void re::Window::initGlobals() {
+    std::filesystem::create_directory(std::filesystem::path(re::MANGA_SETTINGS_DIR));
+
+    for (const auto& p : std::filesystem::directory_iterator(std::filesystem::path(re::MANGA_DIR))) {
+        re::Manga* manga = new re::Manga(p.path());
+        re::globals::mangaByName.insert({manga->name, manga});
+    }    
+
+    std::ifstream file(re::MANGAS_SETTINGS_FILE);
+    if (file.is_open()) {
+        std::string line;
+        std::vector<std::string> v;
+        while (std::getline(file, line)) {
+            re::split(line, '-', v);
+            try {
+                re::Manga* manga = re::globals::mangaByName.at(v[0]);
+                manga->lastChapterReaded = std::stoi(v[1]);
+                manga->isFavorite = (bool) std::stoi(v[2]);            
+                v.clear();
+            } catch (std::out_of_range& e ){
+                std::cout << "Manga info not loaded " << line << ' ' << e.what() << '\n';
+            }
+        }
+        file.close();
+    }
+}
+
+
+void re::Window::deleteGlobals() {
+    std::ofstream file(re::MANGAS_SETTINGS_FILE);
+    if (file.is_open()) {
+        for (const auto& pair : re::globals::mangaByName)
+            file << pair.first + '-' + std::to_string(pair.second->lastChapterReaded) + '-' + std::to_string((int) pair.second->isFavorite) + '\n';
+        file.close();
+    }
+    for (const auto& pair : re::globals::mangaByName)
+        delete pair.second;
+}
+
+void re::Window::initWindow() {
+    this->initGlobals();
+    this->changeScene(re::mainScene);
+}
+
+
+void re::Window::close() {
     delete this->scene;
-    re::globals::deleteGlobals();
+    this->deleteGlobals();
+    re::FontPool::rmvAll();
 }
 
 
@@ -61,6 +113,7 @@ void re::Window::handleInput() {
 
 void re::Window::update() {
     const double dt = this->clock.restart().asSeconds();
+    re::globals::currentTime += dt;
     this->scene->update(dt);
 }
 

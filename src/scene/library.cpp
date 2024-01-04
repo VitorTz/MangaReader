@@ -5,15 +5,17 @@
 re::Library::Library(
     const re::ChangeScene& changeScene
 ) : re::Scene(re::SceneId::LibraryId, changeScene) {
-    re::Manga* manga = re::globals::mangaByName.at("Sextudy Group");
-    re::MangaComponent* mangaComponent = new re::MangaComponent(manga);
-    mangaComponent->load();
-    this->add(mangaComponent);
+    re::MangaGrid* mangaGrid = new re::MangaGrid({150, 25});
+    this->add(mangaGrid);
 }
 
 
-void re::Library::update(const double dt) {
+void re::Library::update(const double& dt) {
     re::Scene::update(dt);
+    re::MangaGrid* grid = (re::MangaGrid*) this->get("MangaGrid");
+    re::Manga* selectedManga = grid->getCurrentSelectedManga();
+    if (selectedManga != nullptr) {
+        re::globals::currentMangaName = selectedManga->name;
+        this->changeScene(re::SceneId::ReaderId);
+    }
 }
-
-

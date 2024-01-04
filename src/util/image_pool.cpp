@@ -1,7 +1,6 @@
 #include "../../include/util/image_pool.hpp"
 
 
-
 std::map<std::string, sf::Texture*> re::ImagePool::images;
 
 
@@ -19,7 +18,6 @@ void re::ImagePool::rmv(const std::string& s) {
     if (re::ImagePool::images.find(s) != re::ImagePool::images.end()) {
         sf::Texture* t = re::ImagePool::images.at(s);
         re::ImagePool::images.erase(s);
-        std::cout << "Removing " << s << '\n';
         delete t;
     }
 }

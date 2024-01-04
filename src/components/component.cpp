@@ -18,17 +18,17 @@ re::Component::Component(
 
 
 re::Component::~Component() {
-
+    
 }
 
 
-void re::Component::update(const double dt) {
-
+void re::Component::update(const double& dt) {
+    return;
 }
 
 
 void re::Component::draw(sf::RenderWindow& window) {
-
+    return;
 }
 
 

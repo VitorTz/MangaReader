@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 #include "chapter.hpp"
+#include "../util/util.hpp"
 
 
 namespace re {
@@ -14,6 +15,7 @@ namespace re {
         public:
             const std::filesystem::path path;
             const std::string name;
+            const std::string coverImagePath;
             std::size_t lastChapterReaded;
             std::vector<re::Chapter*> chapters;
             bool isFavorite;

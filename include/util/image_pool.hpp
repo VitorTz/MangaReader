@@ -3,7 +3,6 @@
 #include <SFML/Graphics/Texture.hpp>
 #include <map>
 #include <string>
-#include <iostream>
 
 
 namespace re {

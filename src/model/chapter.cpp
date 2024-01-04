@@ -1,6 +1,4 @@
 #include "../../include/model/chapter.hpp"
-#include <iostream>
-
 
 
 re::Chapter::Chapter(
@@ -13,8 +11,7 @@ re::Chapter::Chapter(
 
 
 re::Chapter::~Chapter() {
-    for (re::Image* image : this->images)
-        delete image;
+    re::clearPtrVector(this->images);
 }
 
 
@@ -31,7 +28,5 @@ void re::Chapter::loadImages() {
 
 
 void re::Chapter::clearImages() {
-    for (re::Image* image : this->images)
-        delete image;
-    this->images.clear();
+    re::clearPtrVector(this->images);
 }

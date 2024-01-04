@@ -55,7 +55,7 @@ void re::MangaComponent::clear() {
 }
 
 
-void re::MangaComponent::update(const double dt) {
+void re::MangaComponent::update(const double& dt) {
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
         this->previousChapter();
     else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))

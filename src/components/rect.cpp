@@ -1,6 +1,19 @@
 #include "../../include/components/rect.hpp"
 
 
+re::Rect::Rect(
+    const std::string& name
+) : re::Component(name),
+    color(sf::Color::Black) {
+
+}
+
+re::Rect::Rect(
+    const sf::Color& color
+) : re::Component("Rect"), 
+    color(color) {
+        
+    }
 
 re::Rect::Rect(
     const std::string& name,

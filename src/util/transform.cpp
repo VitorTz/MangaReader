@@ -9,6 +9,16 @@ re::Transform::Transform(
 
 
 re::Transform::Transform(
+    const sf::Vector2f& pos,
+    const sf::Vector2f& size
+) : pos(pos),
+    size(size),
+    scale({1.f, 1.f}) {
+        
+    }
+
+
+re::Transform::Transform(
     const sf::Vector2f& pos
 ) : pos(pos),
     scale(1.f, 1.f) {

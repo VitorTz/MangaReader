@@ -9,11 +9,6 @@ re::ImageComponent::ImageComponent(
 }
 
 
-re::ImageComponent::~ImageComponent() {
-    
-}
-
-
 void re::ImageComponent::load() {
     sf::Texture* t = re::ImagePool::get(this->name);
     this->sprite.setTexture(*t);

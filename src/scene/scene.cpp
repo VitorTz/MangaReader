@@ -36,7 +36,7 @@ re::Component* re::Scene::get(const std::string& s) {
 }
 
 
-void re::Scene::update(const double dt) {
+void re::Scene::update(const double& dt) {
     for (const auto& pair : this->componentMap)
         pair.second->update(dt);
 }

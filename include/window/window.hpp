@@ -1,9 +1,8 @@
 #ifndef MANGA_READER_WINDOW_HPP
 #define MANGA_READER_WINDOW_HPP
-#include <SFML/Graphics.hpp>
+#include <fstream>
+#include <iostream>
 #include "../scene/scenes.hpp"
-#include "../constants.hpp"
-#include "../globals.hpp"
 
 
 namespace re {
@@ -22,6 +21,10 @@ namespace re {
             void handleInput();
             void update();
             void draw();
+            void initWindow();
+            void initGlobals();
+            void deleteGlobals();
+            void close();
 
         public:
             Window();

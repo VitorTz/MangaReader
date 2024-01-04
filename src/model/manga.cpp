@@ -5,6 +5,7 @@ re::Manga::Manga(
     const std::filesystem::path& path
 ) : path(path),
     name(path.stem().string()),
+    coverImagePath(re::getMangaCoverFile(this->name)),
     lastChapterReaded(0),
     isFavorite(false) {
         for (const auto& p : std::filesystem::directory_iterator(this->path)) {            
@@ -19,6 +20,5 @@ re::Manga::Manga(
 
 
 re::Manga::~Manga() {
-    for (re::Chapter* chapter : this->chapters)
-        delete chapter;
+    re::clearPtrVector(this->chapters);
 }

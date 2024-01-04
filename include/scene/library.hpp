@@ -11,7 +11,8 @@ namespace re {
 
         public:
             Library(const re::ChangeScene& changeScene);
-            void update(const double dt) override;
+            void update(const double& dt) override;
+
 
     };
     

@@ -10,8 +10,7 @@ re::ChapterComponent::ChapterComponent(
 
 
 re::ChapterComponent::~ChapterComponent() {
-    for (re::ImageComponent* imageComponent : this->images)
-        delete imageComponent;
+    re::clearPtrVector(this->images);
 }
 
 
@@ -33,7 +32,7 @@ void re::ChapterComponent::moveUp(const double dt) {
 } 
 
 
-void re::ChapterComponent::update(const double dt) {
+void re::ChapterComponent::update(const double& dt) {
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
         this->moveDown(dt);
     else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
@@ -50,9 +49,7 @@ void re::ChapterComponent::draw(sf::RenderWindow& window) {
 
 void re::ChapterComponent::clear() {
     this->chapter->clearImages();
-    for (re::ImageComponent* image : this->images)
-        delete image;
-    this->images.clear();
+    re::clearPtrVector(this->images);
 }
 
 void re::ChapterComponent::load() {

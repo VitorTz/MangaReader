@@ -1,11 +1,7 @@
 #ifndef MANGA_READER_SCENE_HPP
 #define MANGA_READER_SCENE_HPP
-#include <SFML/Graphics.hpp>
 #include <functional>
-#include <map>
 #include "../components/components.hpp"
-#include "../constants.hpp"
-#include "../globals.hpp"
 
 
 namespace re {
@@ -34,7 +30,7 @@ namespace re {
         public:
             Scene(const re::SceneId& sceneId, const re::ChangeScene& changeScene);
             virtual ~Scene();
-            virtual void update(const double dt);
+            virtual void update(const double& dt);
             virtual void draw(sf::RenderWindow& window);
             const re::SceneId& getSceneId() const;
 

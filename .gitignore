@@ -3,6 +3,9 @@
 
 # Log file
 *.log
+.vscode/
+settings/
+build/
 
 # BlueJ files
 *.ctxt

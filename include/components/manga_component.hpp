@@ -1,9 +1,7 @@
 #ifndef MANGA_READER_MANGA_COMPONENT_HPP
 #define MANGA_READER_MANGA_COMPONENT_HPP
-#include <vector>
 #include "component.hpp"
 #include "chapter_component.hpp"
-#include "../model/manga.hpp"
 
 
 namespace re {
@@ -27,7 +25,7 @@ namespace re {
             ~MangaComponent() override;
             void load();
             void clear();
-            void update(const double dt) override;
+            void update(const double& dt) override;
             void draw(sf::RenderWindow& window) override;
 
     };
