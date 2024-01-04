@@ -2,31 +2,35 @@
 
 
 re::Chapter::Chapter(
-    const std::filesystem::path& path
-) : path(path),
-    name(path.stem().string()),
-    num(re::extractNum(path.stem().string())) {
+    const std::filesystem::path& _path
+) : path(_path.string()),
+    name(_path.stem()),
+    num(re::extractNum(name)) {
 
     }
 
 
 re::Chapter::~Chapter() {
-    re::clearPtrVector(this->images);
+    this->clearImages();
 }
+
+void re::Chapter::clearImages() {
+    for (re::Image* image : this->images)
+        delete image;
+    this->images.clear();
+}
+
 
 
 void re::Chapter::loadImages() {
-    for (const auto& p : std::filesystem::directory_iterator(this->path)) {
+    this->clearImages();
+    std::filesystem::path _path(this->path);
+    for (const auto& p : std::filesystem::directory_iterator(_path))
         this->images.push_back(new re::Image(p.path()));
-    }
+    
     std::sort(
-        this->images.begin(), 
+        this->images.begin(),
         this->images.end(),
-        [](re::Image* img1, re::Image* img2) { return img1->num < img2->num; }      
+        [](re::Image* i1, re::Image* i2) { return i1->num < i2->num; }
     );
-}
-
-
-void re::Chapter::clearImages() {
-    re::clearPtrVector(this->images);
 }

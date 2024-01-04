@@ -1,5 +1,4 @@
-#ifndef MANGA_READER_SPRITE_HPP
-#define MANGA_READER_SPRITE_HPP
+#pragma once
 #include "component.hpp"
 
 
@@ -9,17 +8,17 @@ namespace re {
 
         private:
             sf::Sprite sprite;
-
-        public:            
+            
+        public:
             Sprite(const std::string& imagePath);
-            Sprite(const std::string& imagePath, const re::Transform& transform);
-            ~Sprite() override;            
-            void draw(sf::RenderWindow& window) override;
+            Sprite(
+                const std::string& imagePath,
+                const re::Transform& transform
+            );
+            ~Sprite() override;
+            void draw(sf::RenderWindow& window);
 
     };
     
 } // namespace re
 
-
-
-#endif

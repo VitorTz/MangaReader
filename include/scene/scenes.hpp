@@ -1,10 +1,6 @@
-#ifndef MANGA_READER_SCENES_HPP
-#define MANGA_READER_SCENES_HPP
+#pragma once
 
 
 #include "scene.hpp"
 #include "library.hpp"
 #include "reader.hpp"
-
-
-#endif

@@ -1,35 +1,26 @@
-#ifndef MANGA_READER_CHAPTER_COMPONENT_HPP
-#define MANGA_READER_CHAPTER_COMPONENT_HPP
+#pragma once
 #include "component.hpp"
-#include "image_component.hpp"
-
+#include "sprite.hpp"
 
 namespace re {
 
-
     class ChapterComponent : public re::Component {
-
         
         private:
             re::Chapter* chapter;
-            std::vector<re::ImageComponent*> images;
-        
-        private:
-            void moveUp(const double dt);
-            void moveDown(const double dt);
+            std::vector<Sprite*> images;
+            void moveUp(const float& dt);
+            void moveDown(const float& dt);
 
         public:
             ChapterComponent(re::Chapter* chapter);
             ~ChapterComponent() override;
-            void update(const double& dt) override;
-            void draw(sf::RenderWindow& window) override;
             void load();
             void clear();
+            void update(const float& dt) override;
+            void draw(sf::RenderWindow& window) override;
+
 
     };
     
 } // namespace re
-
-
-
-#endif

@@ -3,7 +3,7 @@
 
 re::Transform::Transform(
 
-) : scale(1.f, 1.f) {
+) {
     
 }
 
@@ -12,29 +12,35 @@ re::Transform::Transform(
     const sf::Vector2f& pos,
     const sf::Vector2f& size
 ) : pos(pos),
-    size(size),
-    scale({1.f, 1.f}) {
+    size(size) {
         
     }
 
 
 re::Transform::Transform(
     const sf::Vector2f& pos
-) : pos(pos),
-    scale(1.f, 1.f) {
+) : pos(pos) {
 
     }
 
-re::Transform::Transform(
-    const sf::Vector2f& pos,
-    const sf::Vector2f& size,
-    const sf::Vector2f& scale
-) : pos(pos),
-    size(size),
-    scale(scale) {
 
-    }
+const sf::Vector2f& re::Transform::getPos() const {
+    return this->pos;
+}
 
+void re::Transform::setPos(const sf::Vector2f& pos) {
+    this->pos = pos;
+}
+
+
+const sf::Vector2f& re::Transform::getSize() const {
+    return this->size;
+}
+
+
+void re::Transform::setSize(const sf::Vector2f& size) {
+    this->size = size;
+}
 
 
 float re::Transform::left() const {

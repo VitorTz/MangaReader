@@ -1,21 +1,22 @@
 #include "../../include/scene/library.hpp"
-#include <iostream>
+
 
 
 re::Library::Library(
     const re::ChangeScene& changeScene
 ) : re::Scene(re::SceneId::LibraryId, changeScene) {
-    re::MangaGrid* mangaGrid = new re::MangaGrid({150, 25});
-    this->componentGroup.add(mangaGrid);
-}
+    re::Manga* manga = re::globals::mangaByName.at("Bought By The Demon Lord Before The Ending");
+    re::GridItem* gridItem = new re::GridItem(manga);
+    gridItem->setPos({200, 200});
+    this->componentGroup.add(gridItem);
+}   
 
 
-void re::Library::update(const double& dt) {
+void re::Library::update(const float& dt) {
     re::Scene::update(dt);
-    re::MangaGrid* grid = (re::MangaGrid*) this->componentGroup.get("MangaGrid");
-    re::Manga* selectedManga = grid->getCurrentSelectedManga();
-    if (selectedManga != nullptr) {
-        re::globals::currentMangaName = selectedManga->name;
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
+        re::globals::currentManga = "Secret Class";
         this->changeScene(re::SceneId::ReaderId);
     }
+
 }

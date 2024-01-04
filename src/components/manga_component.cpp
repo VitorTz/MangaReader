@@ -3,63 +3,34 @@
 
 re::MangaComponent::MangaComponent(
     re::Manga* manga
-) : re::Component(manga->name),
+) : re::Component(manga->name + "-Component"),
     manga(manga),
-    currentChapter(nullptr),
-    currentChapterIndex(0) {
-
+    currentChapter(nullptr) {
+        this->changeChapter(this->manga->lastChapterReaded);
     }
 
 
+
 re::MangaComponent::~MangaComponent() {
-    for (re::ChapterComponent* chapterComponent : this->chapters)
-        delete chapterComponent;
+    if (this->currentChapter) delete this->currentChapter;
 }
 
 
-void re::MangaComponent::nextChapter() {
-    this->loadChapter(this->currentChapterIndex + 1);
-}
-
-
-void re::MangaComponent::previousChapter() {
-    this->loadChapter(this->currentChapterIndex - 1);
-}
-
-
-void re::MangaComponent::loadChapter(const std::size_t& chapterIndex) {
-    if (chapterIndex < this->chapters.size()) {
-        if (this->currentChapter) this->currentChapter->clear();
-        this->currentChapterIndex = chapterIndex;
-        this->currentChapter = this->chapters[chapterIndex];
-        this->manga->lastChapterReaded = chapterIndex;
+void re::MangaComponent::changeChapter(const std::size_t& index) {
+    if (index < this->manga->chapters.size()) {
+        if (this->currentChapter) delete this->currentChapter;
+        this->manga->lastChapterReaded = index;
+        this->currentChapter = new re::ChapterComponent(this->manga->chapters.at(index));
         this->currentChapter->load();
     }
 }
 
 
-void re::MangaComponent::load() {
-    this->clear();
-    for (re::Chapter* chapter : this->manga->chapters) {
-        this->chapters.push_back(new re::ChapterComponent(chapter));
-    }
-    this->loadChapter(this->manga->lastChapterReaded);
-}
-
-
-void re::MangaComponent::clear() {
-    if (this->currentChapter) this->currentChapter->clear();
-    for (re::ChapterComponent* chapter : this->chapters)
-        delete chapter;
-    this->chapters.clear();
-}
-
-
-void re::MangaComponent::update(const double& dt) {
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-        this->previousChapter();
-    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-        this->nextChapter();
+void re::MangaComponent::update(const float& dt) {
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+        this->changeChapter(this->manga->lastChapterReaded + 1);
+    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+        this->changeChapter(this->manga->lastChapterReaded - 1);
     this->currentChapter->update(dt);
 }
 

@@ -2,47 +2,29 @@
 
 
 re::Rect::Rect(
-    const std::string& name
-) : re::Component(name),
-    color(sf::Color::Black) {
-
-}
-
-re::Rect::Rect(
+    const re::Transform& transform,
     const sf::Color& color
-) : re::Component("Rect"), 
-    color(color) {
-        
-    }
-
-re::Rect::Rect(
-    const std::string& name,
-    const re::Transform& t,
-    const sf::Color& color
-) : re::Component(name, t),
-    color(color) {
-
-    }
+) : re::Rect("Rect", transform, color) { }
 
 
 re::Rect::Rect(
     const std::string& name,
+    const re::Transform& transform,
     const sf::Color& color
-) : re::Component(name),
+) : re::Component(name, transform),
     color(color) {
-
-}
+        this->rect.setFillColor(color);
+    }
 
 
 void re::Rect::changeColor(const sf::Color& color) {
     this->color = color;
+    this->rect.setFillColor(color);
 }
 
 
 void re::Rect::draw(sf::RenderWindow& window) {
-    this->rect.setPosition(this->transform.pos);
-    this->rect.setSize(this->transform.size);
-    this->rect.setScale(this->transform.scale);
-    this->rect.setFillColor(this->color);
+    this->rect.setPosition(this->transform.getPos());
+    this->rect.setSize(this->transform.getSize());
     window.draw(this->rect);
 }

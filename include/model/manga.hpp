@@ -1,10 +1,9 @@
-#ifndef MANGA_READER_MANGA_INFO_HPP
-#define MANGA_READER_MANGA_INFO_HPP
-#include <filesystem>
+#pragma once
 #include <string>
 #include <vector>
+#include <algorithm>
 #include "chapter.hpp"
-#include "../util/util.hpp"
+#include "../constants.hpp"
 
 
 namespace re {
@@ -13,22 +12,18 @@ namespace re {
     class Manga {
 
         public:
-            const std::filesystem::path path;
+            const std::string path;
             const std::string name;
             const std::string coverImagePath;
             std::size_t lastChapterReaded;
-            std::vector<re::Chapter*> chapters;
             bool isFavorite;
-
+            std::vector<re::Chapter*> chapters;
+        
         public:
-            Manga(const std::filesystem::path& path); 
+            Manga(const std::filesystem::path& _path);
             ~Manga();
+            std::string toString() const;
 
     };
-
     
 } // namespace re
-
-
-
-#endif

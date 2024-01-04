@@ -1,32 +1,28 @@
-#ifndef MANGA_READER_CHAPTER_HPP
-#define MANGA_READER_CHAPTER_HPP
+#pragma once
 #include <filesystem>
+#include <string>
 #include <vector>
-#include "image.hpp"
+#include <algorithm>
 #include "../util/util.hpp"
+#include "image.hpp"
 
 
 namespace re {
 
-
     class Chapter {
 
         public:
-            const std::filesystem::path path;
-            const std::string name;
-            const double num;
+            std::string path;
+            std::string name;
+            std::size_t num;
             std::vector<re::Image*> images;
 
         public:
-            Chapter(const std::filesystem::path& path);
+            Chapter(const std::filesystem::path& _path);
             ~Chapter();
             void loadImages();
             void clearImages();
 
     };
-
     
 } // namespace re
-
-
-#endif

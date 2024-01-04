@@ -1,69 +1,72 @@
 #include "../../include/components/chapter_component.hpp"
+#include <iostream>
 
 
 re::ChapterComponent::ChapterComponent(
     re::Chapter* chapter
-) : re::Component(chapter->name),
+) : re::Component(chapter->name + "-Component"),
     chapter(chapter) {
 
     }
 
 
 re::ChapterComponent::~ChapterComponent() {
-    re::clearPtrVector(this->images);
-    this->chapter->clearImages();
-}
-
-
-void re::ChapterComponent::moveDown(const double dt) {
-    const float deltaY = re::IMAGE_MOVE_SPEED * dt;
-    re::ImageComponent* firstImage = this->images.front();
-    if (firstImage->transform.top() + deltaY <= 0)
-        for (re::ImageComponent* image : this->images)
-            image->transform.moveY(deltaY);
-} 
-
-
-void re::ChapterComponent::moveUp(const double dt) {
-    const float deltaY = re::IMAGE_MOVE_SPEED * dt * -1;
-    re::ImageComponent* lastImage = this->images.back();
-    if (lastImage->transform.bottom() + deltaY >= re::SCREEN_HEIGHT)
-        for (re::ImageComponent* image : this->images)
-            image->transform.moveY(deltaY); 
-} 
-
-
-void re::ChapterComponent::update(const double& dt) {
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
-        this->moveDown(dt);
-    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
-        this->moveUp(dt);
-}
-
-
-void re::ChapterComponent::draw(sf::RenderWindow& window) {
-    for (re::ImageComponent* image : this->images)
-        if (image->transform.collide(re::SCREEN_RECT))
-            image->draw(window);
+    this->clear();
 }
 
 
 void re::ChapterComponent::clear() {
     this->chapter->clearImages();
-    re::clearPtrVector(this->images);
+    re::deletePtrVector(this->images);
 }
+
 
 void re::ChapterComponent::load() {
     this->clear();
     this->chapter->loadImages();
     float top = 0;
-    for (re::Image* imageModel : this->chapter->images) {
-        re::ImageComponent* imageComponent = new re::ImageComponent(imageModel);
-        imageComponent->load();
-        re::Transform& t = imageComponent->transform;
+    for (re::Image* image : this->chapter->images) {
+        re::Sprite* sprite = new re::Sprite(image->path);
+        re::Transform& t = sprite->transform;
         t.setTop(top);
-        t.setCenterX(re::SCREEN_CENTER.x);
+        t.setCenterX(re::constants::SCR_CENTER.x);
         top += t.height();
-        this->images.push_back(imageComponent);
+        this->images.push_back(sprite);
     }
+}
+
+
+
+void re::ChapterComponent::moveDown(const float& dt) {
+    const float deltaY = re::constants::IMAGE_MOVE_SPEED * dt;
+    re::Sprite* firstImage = this->images.front();
+    if (firstImage->transform.top() + deltaY > 0)
+        return;
+    for (re::Sprite* sprite : this->images)
+        sprite->transform.moveY(deltaY);
+}
+
+
+void re::ChapterComponent::moveUp(const float& dt) {
+    const float deltaY = -1 * re::constants::IMAGE_MOVE_SPEED * dt;
+    re::Sprite* lastImage = this->images.back();
+    if (lastImage->transform.bottom() + deltaY < re::constants::SCR_HEIGHT)
+        return;
+    for (re::Sprite* sprite : this->images)
+        sprite->transform.moveY(deltaY);
+}
+
+
+void re::ChapterComponent::update(const float& dt) {
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+        this->moveDown(dt);
+    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+        this->moveUp(dt);
+        
+}
+
+void re::ChapterComponent::draw(sf::RenderWindow& window) {
+    for (re::Sprite* sprite : this->images)
+        if (sprite->transform.collide(re::constants::SCR_TRANSFORM))
+            sprite->draw(window);
 }

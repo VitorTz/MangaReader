@@ -1,8 +1,7 @@
-#ifndef MANGA_READER_SCENE_HPP
-#define MANGA_READER_SCENE_HPP
-#include <functional>
+#pragma once
 #include "../components/components.hpp"
 #include "../util/component_group.hpp"
+#include <functional>
 
 
 namespace re {
@@ -18,7 +17,7 @@ namespace re {
 
     class Scene {
 
-        private:
+        public:
             const re::SceneId sceneId;
         
         protected:
@@ -26,20 +25,15 @@ namespace re {
             re::ComponentGroup componentGroup;
 
         public:
+
             Scene(
-                const re::SceneId& sceneId, 
+                const re::SceneId& sceneId,
                 const re::ChangeScene& changeScene
             );
             virtual ~Scene();
-            virtual void update(const double& dt);
+            virtual void update(const float& dt);
             virtual void draw(sf::RenderWindow& window);
-            const re::SceneId& getSceneId() const;
-
 
     };
     
 } // namespace re
-
-
-
-#endif

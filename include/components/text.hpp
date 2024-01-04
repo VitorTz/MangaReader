@@ -1,39 +1,27 @@
-#ifndef MANGA_READER_TEXT_HPP
-#define MANGA_READER_TEXT_HPP
+#pragma once
 #include "component.hpp"
 
 
 namespace re {
 
-
     class Text : public re::Component {
 
+
         private:
+            std::string textStr;
             sf::Text text;
-            std::string txtStr;
 
         public:
             Text(
-                const std::string& name, 
-                const std::string& text,
-                const re::FontId& fontId,
-                const sf::Color& color,
-                const std::size_t& size
-            );
-            Text(                
-                const std::string& text,
-                const re::FontId& fontId,
-                const sf::Color& color,
-                const std::size_t& size
-            );
-            void setCenter(const sf::Vector2f& pos);
-            void changeTxt(const std::string& text);
+                const std::string& txt,
+                const std::size_t& size,
+                const re::Font::FontId& fontId,
+                const sf::Color& color
+            ); 
+            void changeTxt(const std::string& s);           
+            void setCenter(const sf::Vector2f& center);
             void draw(sf::RenderWindow& window) override;
-            const std::string& getTxt() const;
 
     };
     
 } // namespace re
-
-
-#endif

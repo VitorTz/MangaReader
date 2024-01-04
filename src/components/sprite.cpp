@@ -3,29 +3,28 @@
 
 
 re::Sprite::Sprite(
-    const std::string& imagePath
-) : re::Sprite(imagePath, {}) {
-    
+    const std::string& imagePath,
+    const re::Transform& transform
+) : re::Component(imagePath, transform) {
+    sf::Texture* t = re::ImagePool::get(this->name);
+    this->sprite.setTexture(*t);
+    this->transform.setSize((sf::Vector2f) t->getSize());
 }
 
 
 re::Sprite::Sprite(
-    const std::string& imagePath,
-    const re::Transform& transform
-) : re::Component(imagePath, transform) {
-    sf::Texture* t = re::ImagePool::get(this->getName());
-    this->sprite.setTexture(*t);
-    this->transform.size = (sf::Vector2f) t->getSize();
+    const std::string& imagePath 
+) : re::Sprite(imagePath, {}) {
+
 }
 
 
 re::Sprite::~Sprite() {
-    re::ImagePool::rmv(this->getName());
+    re::ImagePool::rmv(this->name);
 }
 
 
 void re::Sprite::draw(sf::RenderWindow& window) {
-    this->sprite.setPosition(this->transform.pos);
-    this->sprite.setScale(this->transform.scale);
+    this->sprite.setPosition(this->transform.getPos());
     window.draw(this->sprite);
 }

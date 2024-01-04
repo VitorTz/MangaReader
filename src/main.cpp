@@ -1,8 +1,69 @@
 #include "../include/window/window.hpp"
+#include <fstream>
+#include <iostream>
 
 
-int main() {
+void initMangas();
+
+void init() {
+    initMangas();
+}
+
+
+void initMangas() {
+
+    std::filesystem::path path(re::constants::MANGA_DIR);
+
+    for (const auto& p : std::filesystem::directory_iterator(path)) {
+        const std::filesystem::path& _path = p.path();
+        re::globals::mangaByName.insert(
+            {
+                _path.stem().string(), 
+                new re::Manga(_path)                
+            }
+        );
+    }
+
+    std::fstream file;
+    std::string line;
+    file.open(re::constants::MANGA_INFO_FILE, std::fstream::in);
+    if (file.is_open()) {
+        while (std::getline(file, line)) {
+            std::vector<std::string> v;
+            re::split(line, '-', v);            
+            re::Manga* manga = re::globals::mangaByName.at(v[0]);
+            manga->lastChapterReaded = std::stoi(v[1]);
+            manga->isFavorite = v[2] == "1";
+        }
+        file.close();
+    }
+
+}
+
+
+
+void saveMangas() {
+    std::fstream file;
+    file.open(re::constants::MANGA_INFO_FILE, std::fstream::out);
+
+    for (const auto& pair : re::globals::mangaByName) {
+        file << pair.second->toString() << '\n';
+        delete pair.second;
+    }
+    
+    file.close();
+}
+
+void close() {
+    saveMangas();
+    re::ImagePool::rmvAll();
+    re::Font::FontPool::rmvAll();
+}
+
+
+int main(void) {
+    init();   
     re::Window w;
     w.run();
-    return 0;
+    close();
 }

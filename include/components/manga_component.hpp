@@ -1,5 +1,4 @@
-#ifndef MANGA_READER_MANGA_COMPONENT_HPP
-#define MANGA_READER_MANGA_COMPONENT_HPP
+#pragma once
 #include "component.hpp"
 #include "chapter_component.hpp"
 
@@ -10,27 +9,17 @@ namespace re {
 
         private:
             re::Manga* manga;
-            std::vector<re::ChapterComponent*> chapters;
             re::ChapterComponent* currentChapter;
-            std::size_t currentChapterIndex;
         
         private:
-            void nextChapter();
-            void previousChapter();
-            void loadChapter(const std::size_t& chapterIndex);
-        
+            void changeChapter(const std::size_t& index);
 
         public:
             MangaComponent(re::Manga* manga);
             ~MangaComponent() override;
-            void load();
-            void clear();
-            void update(const double& dt) override;
+            void update(const float& dt) override;
             void draw(sf::RenderWindow& window) override;
 
     };
     
 } // namespace re
-
-
-#endif

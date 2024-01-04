@@ -5,7 +5,7 @@ BUILD    := ./build
 OBJ_DIR  := $(BUILD)/objects
 APP_DIR  := $(BUILD)/apps
 SRC_DIRS ?= ./src
-TARGET   := a.out
+TARGET   := manga_reader.out
 INCLUDE  := -Iinclude/ 
 SRC      := $(shell find $(SRC_DIRS) -name *.cpp -or -name *.c -or -name *.s)
 

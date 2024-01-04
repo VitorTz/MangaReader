@@ -1,10 +1,9 @@
-#ifndef MANGA_READER_COMPONENT_GROUP_HPP
-#define MANGA_READER_COMPONENT_GROUP_HPP
-#include "../components/component.hpp"
+#pragma once
 #include <map>
-
+#include "../components/component.hpp"
 
 namespace re {
+
 
     class ComponentGroup {
 
@@ -15,14 +14,11 @@ namespace re {
             ComponentGroup();
             ~ComponentGroup();
             void add(re::Component* c);
-            void rmv(const std::string& s);
-            re::Component* get(const std::string& s);
-            void update(const double& dt);
+            void rmv(const std::string& name);
+            re::Component* get(const std::string& name);
+            void update(const float& dt);
             void draw(sf::RenderWindow& window);
 
     };
     
 } // namespace re
-
-
-#endif
