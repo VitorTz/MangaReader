@@ -60,6 +60,7 @@ void re::Window::handleInput() {
 
 void re::Window::update() {
     const float dt = this->clock.restart().asSeconds();
+    re::globals::mousePos = (sf::Vector2f) sf::Mouse::getPosition(this->window);
     this->scene->update(dt);
 }
 

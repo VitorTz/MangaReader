@@ -1,5 +1,6 @@
 #pragma once
 #include "component.hpp"
+#include "../style/text_style.hpp"
 
 
 namespace re {
@@ -14,9 +15,7 @@ namespace re {
         public:
             Text(
                 const std::string& txt,
-                const std::size_t& size,
-                const re::Font::FontId& fontId,
-                const sf::Color& color
+                const re::Style::TextStyle& style
             ); 
             void changeTxt(const std::string& s);           
             void setCenter(const sf::Vector2f& center);

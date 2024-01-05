@@ -31,8 +31,9 @@ std::string re::subStr(
     const std::size_t& start,
     const std::size_t& end
 ) {
+    std::size_t _end = end > s.size() ? s.size() : end;
     std::string str;
-    for (std::size_t i = start; i < end; i++) 
+    for (std::size_t i = start; i < _end; i++) 
         str += s.at(i);
     return str;
 }

@@ -52,6 +52,8 @@ namespace re {
 
             bool collide(const re::Transform& t);
 
+            bool collidePoint(const sf::Vector2f& pos);
+
     };
     
 } // namespace re

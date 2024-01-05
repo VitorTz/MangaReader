@@ -5,7 +5,7 @@ re::Manga::Manga(
     const std::filesystem::path& _path 
 ) : path(_path.string()),
     name(_path.stem()),
-    coverImagePath(re::constants::MANGA_COVER_DIR + '/' + name + ".png"),
+    coverImagePath(re::getCoverFile(name)),
     lastChapterReaded(0),
     isFavorite(false) {
         for (const auto& p : std::filesystem::directory_iterator(_path)) {
@@ -26,4 +26,14 @@ re::Manga::~Manga() {
 
 std::string re::Manga::toString() const {
     return this->name + '-' + std::to_string(this->lastChapterReaded) + '-' + std::to_string((int) this->isFavorite);
+}
+
+
+std::string re::getCoverFile(const std::string& mangaName) {
+    const std::string filePath = re::constants::MANGA_COVER_DIR + '/' + mangaName + ".png";
+    std::filesystem::path path(filePath);
+    if (std::filesystem::exists(path)) {
+        return filePath;
+    }
+    return re::constants::DEFAULT_COVER_FILE;
 }

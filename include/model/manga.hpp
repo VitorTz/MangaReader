@@ -9,6 +9,8 @@
 namespace re {
 
 
+    std::string getCoverFile(const std::string& mangaName);
+
     class Manga {
 
         public:

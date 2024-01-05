@@ -6,7 +6,6 @@
 #include "text.hpp"
 
 
-
 namespace re {
 
 
@@ -26,6 +25,8 @@ namespace re {
             ~GridItem();
             void setPos(const sf::Vector2f& pos);
             void draw(sf::RenderWindow& window);
+            void moveY(const float& y);
+            const std::string& getMangaName() const;
 
     };
     

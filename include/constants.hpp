@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include "util/transform.hpp"
+#include <SFML/Window/Keyboard.hpp>
 #include "colors.hpp"
 
 
@@ -22,12 +23,20 @@ namespace re {
 
         const std::string MANGA_DIR = "/mnt/HD1/Manga";
         const std::string MANGA_COVER_DIR = "/mnt/HD1/MangaCover";
+        const std::string DEFAULT_COVER_FILE = "res/cover.png";
 
         const std::string MANGA_INFO_FILE = "res/mangas.txt";
 
-        const sf::Vector2f GRID_ITEM_SIZE(200, 280);
-        const sf::Vector2f GRID_ITEM_RECT_SIZE(200, 100);
+        const sf::Vector2f GRID_ITEM_SIZE(240, 336);
+        const sf::Vector2f GRID_ITEM_RECT_SIZE(240, 100);
         const sf::Color GRID_ITEM_RECT_COLOR = re::Colors::BLACK_T;
+
+        const sf::Keyboard::Key INTERACTION_KEYS[] = {
+            sf::Keyboard::Key::Left,
+            sf::Keyboard::Key::Right,
+            sf::Keyboard::Key::Up,
+            sf::Keyboard::Key::Down
+        };
 
     } // namespace constants
     

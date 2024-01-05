@@ -5,6 +5,7 @@
 #include <algorithm>
 #include <filesystem>
 #include <map>
+#include "../style/style.hpp"
 #include "../util/image_pool.hpp"
 #include "../util/font_pool.hpp"
 #include "../util/transform.hpp"
@@ -12,6 +13,7 @@
 #include "../globals.hpp"
 #include "../model/models.hpp"
 #include "../util/util.hpp"
+#include "../util/timer.hpp"
 
 
 namespace re {

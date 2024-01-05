@@ -159,4 +159,11 @@ void re::Transform::setHeight(const float height) {
     this->size.y = height;
 }
 
-
+bool re::Transform::collidePoint(const sf::Vector2f& pos) {
+    return (
+        pos.x >= this->left() &&
+        pos.x <= this->right() &&
+        pos.y >= this->top() &&
+        pos.y <= this->bottom()
+    );
+}

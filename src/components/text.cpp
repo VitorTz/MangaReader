@@ -3,15 +3,13 @@
 
 re::Text::Text(
     const std::string& txt,
-    const std::size_t& size,   
-    const re::Font::FontId& fontId,
-    const sf::Color& color
+    const re::Style::TextStyle& style
 ) : re::Component(txt),
     textStr(txt) {
-        sf::Font* f = re::Font::FontPool::get(fontId);
+        sf::Font* f = re::Font::FontPool::get(style.font);
         this->text.setFont(*f);
-        this->text.setFillColor(color);
-        this->text.setCharacterSize(size);
+        this->text.setFillColor(style.color);
+        this->text.setCharacterSize(style.size);
         this->changeTxt(txt);
     }
 

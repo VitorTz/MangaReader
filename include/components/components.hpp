@@ -6,4 +6,5 @@
 #include "manga_component.hpp"
 #include "rect.hpp"
 #include "grid_item.hpp"
+#include "grid.hpp"
 #include "text.hpp"

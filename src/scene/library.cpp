@@ -5,18 +5,19 @@
 re::Library::Library(
     const re::ChangeScene& changeScene
 ) : re::Scene(re::SceneId::LibraryId, changeScene) {
-    re::Manga* manga = re::globals::mangaByName.at("Bought By The Demon Lord Before The Ending");
-    re::GridItem* gridItem = new re::GridItem(manga);
-    gridItem->setPos({200, 200});
-    this->componentGroup.add(gridItem);
+    re::Grid* grid = new re::Grid({140, 100});
+    this->componentGroup.add(grid);
 }   
 
 
 void re::Library::update(const float& dt) {
     re::Scene::update(dt);
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
-        re::globals::currentManga = "Secret Class";
+    re::Grid* grid = (re::Grid*) this->componentGroup.get("Grid");
+    const std::string mangaName = grid->getCurrentManga();
+    if (!mangaName.empty()) {
+        re::globals::currentManga = mangaName;
         this->changeScene(re::SceneId::ReaderId);
     }
+        
 
 }
