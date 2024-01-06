@@ -7,7 +7,7 @@ namespace re {
     class Sprite : public re::Component {
 
         private:
-            sf::Sprite sprite;
+            sf::Sprite sprite;            
             
         public:
             Sprite(const std::string& imagePath);
@@ -15,7 +15,7 @@ namespace re {
                 const std::string& imagePath,
                 const re::Transform& transform
             );
-            ~Sprite() override;
+            ~Sprite() override;            
             void draw(sf::RenderWindow& window);
 
     };

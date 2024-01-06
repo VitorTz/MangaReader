@@ -1,4 +1,5 @@
 #include "../../include/window/window.hpp"
+#include <iostream>
 
 
 re::Window::Window(
@@ -8,7 +9,7 @@ re::Window::Window(
     re::constants::SCR_TITLE,
     sf::Style::Close | sf::Style::Titlebar
 ) {
-
+    // window settings
     this->window.setFramerateLimit(re::constants::FPS);
     sf::VideoMode desktop = sf::VideoMode::getDesktopMode();
     this->window.setPosition(
@@ -17,7 +18,7 @@ re::Window::Window(
             desktop.height / 2 - re::constants::SCR_HEIGHT / 2
         )
     );
-
+    // handle scenes
     this->changeScene = [this](const re::SceneId& sceneId) {
         if (this->scene == nullptr || this->scene->sceneId != sceneId) {
             if (this->scene) delete this->scene;
@@ -61,6 +62,7 @@ void re::Window::handleInput() {
 void re::Window::update() {
     const float dt = this->clock.restart().asSeconds();
     re::globals::mousePos = (sf::Vector2f) sf::Mouse::getPosition(this->window);
+    re::globals::screenHasFocus = this->window.hasFocus();
     this->scene->update(dt);
 }
 

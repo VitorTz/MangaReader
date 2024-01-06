@@ -1,7 +1,7 @@
 #pragma once
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/Graphics/RectangleShape.hpp>
-#include "../style/border_style.hpp"
+#include "../style/style.hpp"
 #include "../util/transform.hpp"
 
 

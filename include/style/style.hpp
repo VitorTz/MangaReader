@@ -1,13 +1,41 @@
 #pragma once
-#include "text_style.hpp"
-#include "border_style.hpp"
+#include <cctype>
+#include "../util/font_pool.hpp"
 #include "../colors.hpp"
 
 
 namespace re {
 
-
     namespace Style {
+
+        class BorderStyle {
+            
+            public:
+                const sf::Color color;
+                const std::size_t thickness;
+        
+            public:
+                BorderStyle(
+                    const sf::Color& color,
+                    const std::size_t& thickness
+                );
+
+        };
+
+        class TextStyle {
+
+            public:
+                const re::Font::FontId font;
+                const std::size_t size;
+                const sf::Color color;
+            
+            TextStyle(
+                const re::Font::FontId& font,
+                const std::size_t& size,
+                const sf::Color& color
+            );
+
+        };
 
         const re::Style::TextStyle coverTxtStyle(
             re::Font::FontId::Regular,
@@ -17,7 +45,7 @@ namespace re {
 
         const re::Style::BorderStyle coverBorderStyle(
             re::Colors::PINK,
-            2
+            4
         );
         
     } // namespace Style

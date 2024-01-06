@@ -9,8 +9,7 @@ namespace re {
         private:
             re::Chapter* chapter;
             std::vector<Sprite*> images;
-            void moveUp(const float& dt);
-            void moveDown(const float& dt);
+            void move(const float& dt);
 
         public:
             ChapterComponent(re::Chapter* chapter);

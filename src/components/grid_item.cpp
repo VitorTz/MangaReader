@@ -1,10 +1,35 @@
 #include "../../include/components/grid_item.hpp"
+#include <iostream>
+
+
+re::Bookmark::Bookmark() {
+    this->bookmark_0 = new re::Sprite(re::constants::BOOKMARK_ICON_0);
+    this->bookmark_1 = new re::Sprite(re::constants::BOOKMARK_ICON_1);
+}
+
+
+re::Bookmark::~Bookmark() {
+    delete this->bookmark_0;
+    delete this->bookmark_1;
+}
+
+
+void re::Bookmark::draw(
+    sf::RenderWindow& window,
+    const bool& status,
+    const sf::Vector2f& pos
+) {
+    re::Sprite* s = status == true ? this->bookmark_1 : this->bookmark_0;
+    s->transform.setPos(pos);
+    s->draw(window);
+}
 
 
 re::GridItem::GridItem(
     re::Manga* manga
-) : re::Component("GridItem-" + manga->name),
-    manga(manga) {
+) : re::Component(manga->name),
+    manga(manga),
+    bookmark(new re::Bookmark()) {
     this->image = new re::Sprite(manga->coverImagePath);    
     this->transform.setSize(this->image->transform.getSize());
     this->rect = new re::Rect(
@@ -72,6 +97,11 @@ void re::GridItem::draw(sf::RenderWindow& window) {
     this->rect->draw(window);
     for (re::Text* t : this->texts)
         t->draw(window);
+    this->bookmark->draw(
+        window, 
+        this->manga->isFavorite, 
+        {this->transform.left() + 10, this->transform.top() + 10}
+    );
 }
 
 
@@ -80,6 +110,7 @@ void re::GridItem::moveY(const float& y) {
 }
 
 
-const std::string& re::GridItem::getMangaName() const {
-    return this->manga->name;
+re::Manga* re::GridItem::getManga() {
+    return this->manga;
 }
+

@@ -3,13 +3,6 @@
 #include <iostream>
 
 
-void initMangas();
-
-void init() {
-    initMangas();
-}
-
-
 void initMangas() {
 
     std::filesystem::path path(re::constants::MANGA_DIR);
@@ -30,16 +23,19 @@ void initMangas() {
     if (file.is_open()) {
         while (std::getline(file, line)) {
             std::vector<std::string> v;
-            re::split(line, '-', v);            
-            re::Manga* manga = re::globals::mangaByName.at(v[0]);
-            manga->lastChapterReaded = std::stoi(v[1]);
-            manga->isFavorite = v[2] == "1";
+            re::split(line, '-', v);
+            const std::string& mangaName = v.at(0);
+            if (re::globals::mangaByName.find(mangaName) != re::globals::mangaByName.end()) {
+                re::Manga* manga = re::globals::mangaByName.at(mangaName);
+                manga->lastChapterReaded = std::stoi(v.at(1));
+                manga->isFavorite = v.at(2) == "1";
+            } else {
+                std::cout << mangaName << " not founded!\n";
+            }
         }
         file.close();
     }
-
 }
-
 
 
 void saveMangas() {
@@ -54,6 +50,7 @@ void saveMangas() {
     file.close();
 }
 
+
 void close() {
     saveMangas();
     re::ImagePool::rmvAll();
@@ -62,7 +59,7 @@ void close() {
 
 
 int main(void) {
-    init();   
+    initMangas();
     re::Window w;
     w.run();
     close();

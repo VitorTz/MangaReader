@@ -1,11 +1,10 @@
 #include "../../include/scene/library.hpp"
 
 
-
 re::Library::Library(
     const re::ChangeScene& changeScene
 ) : re::Scene(re::SceneId::LibraryId, changeScene) {
-    re::Grid* grid = new re::Grid({140, 100});
+    re::Grid* grid = new re::Grid({140, 20}, 4, 10);
     this->componentGroup.add(grid);
 }   
 

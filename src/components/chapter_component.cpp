@@ -36,32 +36,26 @@ void re::ChapterComponent::load() {
 }
 
 
-
-void re::ChapterComponent::moveDown(const float& dt) {
-    const float deltaY = re::constants::IMAGE_MOVE_SPEED * dt;
+void re::ChapterComponent::move(const float& dt) {
+    const float y = re::constants::IMAGE_MOVE_SPEED * dt;
     re::Sprite* firstImage = this->images.front();
-    if (firstImage->transform.top() + deltaY > 0)
-        return;
-    for (re::Sprite* sprite : this->images)
-        sprite->transform.moveY(deltaY);
-}
-
-
-void re::ChapterComponent::moveUp(const float& dt) {
-    const float deltaY = -1 * re::constants::IMAGE_MOVE_SPEED * dt;
     re::Sprite* lastImage = this->images.back();
-    if (lastImage->transform.bottom() + deltaY < re::constants::SCR_HEIGHT)
-        return;
-    for (re::Sprite* sprite : this->images)
-        sprite->transform.moveY(deltaY);
+    if (
+        firstImage->transform.top() + y <= 0 &&
+        lastImage->transform.bottom() + y >= re::constants::SCR_HEIGHT
+    ) {
+        for (re::Sprite* sprite : this->images)
+            sprite->transform.moveY(y);
+    }
 }
 
 
-void re::ChapterComponent::update(const float& dt) {
+
+void re::ChapterComponent::update(const float& dt) {     
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
-        this->moveDown(dt);
+        this->move(dt);
     else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
-        this->moveUp(dt);
+        this->move(-dt);
         
 }
 

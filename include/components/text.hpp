@@ -1,6 +1,6 @@
 #pragma once
 #include "component.hpp"
-#include "../style/text_style.hpp"
+#include "../style/style.hpp"
 
 
 namespace re {
