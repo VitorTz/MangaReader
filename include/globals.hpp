@@ -4,7 +4,6 @@
 #include <vector>
 #include <filesystem>
 #include "model/manga.hpp"
-#include <SFML/System/Vector2.hpp>
 #include <SFML/Window/Keyboard.hpp>
 
 

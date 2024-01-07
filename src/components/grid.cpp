@@ -96,8 +96,6 @@ void re::Grid::changeCurrentItem(const std::size_t& index) {
 
 
 void re::Grid::update(const float& dt) {
-    if (re::globals::screenHasFocus == false)
-        return;
     for (const sf::Keyboard::Key& k : re::constants::INTERACTION_KEYS) {
         if (!(sf::Keyboard::isKeyPressed(k) && this->timer.check()))
             continue;;
@@ -136,7 +134,7 @@ void re::Grid::draw(sf::RenderWindow& window) {
 
 
 std::string re::Grid::getCurrentManga() {
-    if (re::globals::screenHasFocus && sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))
         return this->currentItem.item->name;
     return "";
 }

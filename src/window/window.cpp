@@ -10,12 +10,12 @@ re::Window::Window(
     sf::Style::Close | sf::Style::Titlebar
 ) {
     // window settings
-    this->window.setFramerateLimit(re::constants::FPS);
+    this->window.setFramerateLimit(re::constants::FPS);    
     sf::VideoMode desktop = sf::VideoMode::getDesktopMode();
     this->window.setPosition(
         sf::Vector2i(
-            desktop.width / 2 - re::constants::SCR_WIDTH / 2,
-            desktop.height / 2 - re::constants::SCR_HEIGHT / 2
+            desktop.width / 2 - re::constants::SCR_SIZE.x / 2,
+            desktop.height / 2 - re::constants::SCR_SIZE.y / 2
         )
     );
     // handle scenes

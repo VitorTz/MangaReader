@@ -17,7 +17,8 @@ re::Scene::~Scene() {
 
 
 void re::Scene::update(const float& dt) {
-    this->componentGroup.update(dt);
+    if (re::globals::screenHasFocus)
+        this->componentGroup.update(dt);
 }
 
 

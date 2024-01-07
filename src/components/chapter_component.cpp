@@ -42,7 +42,7 @@ void re::ChapterComponent::move(const float& dt) {
     re::Sprite* lastImage = this->images.back();
     if (
         firstImage->transform.top() + y <= 0 &&
-        lastImage->transform.bottom() + y >= re::constants::SCR_HEIGHT
+        lastImage->transform.bottom() + y >= re::constants::SCR_SIZE.y
     ) {
         for (re::Sprite* sprite : this->images)
             sprite->transform.moveY(y);
