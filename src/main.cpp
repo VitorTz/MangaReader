@@ -5,8 +5,21 @@
 
 void initMangas() {
 
-    std::filesystem::path path(re::constants::MANGA_DIR);
 
+    std::filesystem::path path(re::constants::MANGA_DIR);
+    
+    if (!std::filesystem::exists(path)) {
+        std::cout << "INVALID MANGA FOLDER -> " << re::constants::MANGA_DIR << '\n';
+        std::exit(-1);
+    }
+
+
+    if (!std::filesystem::exists(std::filesystem::path(re::constants::MANGA_COVER_DIR))) {
+        std::cout << "INVALID MANGA COVER FOLDER -> " << re::constants::MANGA_DIR << '\n';
+        std::exit(-1);
+    }
+
+    // load mangas
     for (const auto& p : std::filesystem::directory_iterator(path)) {
         const std::filesystem::path& _path = p.path();
         re::globals::mangaByName.insert(
@@ -17,6 +30,7 @@ void initMangas() {
         );
     }
 
+    // load manga favorite and last chapter readed infos
     std::fstream file;
     std::string line;
     file.open(re::constants::MANGA_INFO_FILE, std::fstream::in);
