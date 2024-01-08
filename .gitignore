@@ -5,6 +5,7 @@
 *.log
 .vscode/
 build/
+res/mangas.txt
 
 # BlueJ files
 *.ctxt

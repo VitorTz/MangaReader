@@ -17,6 +17,4 @@ void re::Library::update(const float& dt) {
         re::globals::currentManga = mangaName;
         this->changeScene(re::SceneId::ReaderId);
     }
-        
-
 }

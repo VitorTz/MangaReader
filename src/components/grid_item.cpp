@@ -1,28 +1,4 @@
 #include "../../include/components/grid_item.hpp"
-#include <iostream>
-
-
-re::Bookmark::Bookmark() {
-    this->bookmark_0 = new re::Sprite(re::constants::BOOKMARK_ICON_0);
-    this->bookmark_1 = new re::Sprite(re::constants::BOOKMARK_ICON_1);
-}
-
-
-re::Bookmark::~Bookmark() {
-    delete this->bookmark_0;
-    delete this->bookmark_1;
-}
-
-
-void re::Bookmark::draw(
-    sf::RenderWindow& window,
-    const bool& status,
-    const sf::Vector2f& pos
-) {
-    re::Sprite* s = status == true ? this->bookmark_1 : this->bookmark_0;
-    s->transform.setPos(pos);
-    s->draw(window);
-}
 
 
 re::GridItem::GridItem(
@@ -32,10 +8,7 @@ re::GridItem::GridItem(
     bookmark(new re::Bookmark()) {
     this->image = new re::Sprite(manga->coverImagePath);    
     this->transform.setSize(this->image->transform.getSize());
-    this->rect = new re::Rect(
-        {{}, re::constants::GRID_ITEM_RECT_SIZE}, 
-        re::constants::GRID_ITEM_RECT_COLOR
-    );
+    this->rect = new re::Rect(re::constants::GRID_ITEM_RECT_COLOR);
     this->initTxt();
 }
 
@@ -52,7 +25,7 @@ void re::GridItem::initTxt() {
 
     const sf::Vector2f txtSize = re::Font::getStrSize(mangaName, txtStyle.size, txtStyle.font);
 
-    const int lines = std::round((0.5 + (txtSize.x / this->rect->transform.width())));    
+    const int lines = std::round((0.5 + (txtSize.x / this->transform.width())));
     const std::size_t charPerLine = mangaName.size() / lines;
     
     std::vector<std::string> words;
@@ -68,7 +41,8 @@ void re::GridItem::initTxt() {
 
     if (!currentStr.empty())
         this->texts.insert(this->texts.begin(), new re::Text(currentStr, txtStyle));
-
+    
+    this->rect->transform.setWidth(this->transform.width());
     this->rect->transform.setHeight(txtSize.y * this->texts.size() + 30);
 
 }
@@ -95,8 +69,7 @@ void re::GridItem::setPos(const sf::Vector2f& pos) {
 void re::GridItem::draw(sf::RenderWindow& window) {
     this->image->draw(window);
     this->rect->draw(window);
-    for (re::Text* t : this->texts)
-        t->draw(window);
+    for (re::Text* t : this->texts) t->draw(window);
     this->bookmark->draw(
         window, 
         this->manga->isFavorite, 

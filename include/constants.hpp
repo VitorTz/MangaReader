@@ -16,7 +16,7 @@ namespace re {
         const sf::Vector2f SCR_CENTER(SCR_WIDTH / 2, SCR_HEIGHT / 2);
         const re::Transform SCR_TRANSFORM({}, SCR_SIZE);
         const std::string SCR_TITLE("Manga Reader");
-        const sf::Color SCR_COLOR = re::Colors::DARK_GREY;
+        const sf::Color SCR_COLOR = re::Colors::DARK_BLUE;
         
         const int FPS = 60;
         const int IMAGE_MOVE_SPEED = 450;
@@ -24,7 +24,6 @@ namespace re {
         const std::string MANGA_DIR = "/mnt/HD1/Manga";
         const std::string MANGA_COVER_DIR = "/mnt/HD1/MangaCover";
         const std::string DEFAULT_COVER_FILE = "res/cover.png";
-
         const std::string MANGA_INFO_FILE = "res/mangas.txt";
 
         const std::string BOOKMARK_ICON_0 = "res/bookmark_0.png";
@@ -32,7 +31,7 @@ namespace re {
 
         const sf::Vector2f GRID_ITEM_SIZE(240, 336);
         const sf::Vector2f GRID_ITEM_RECT_SIZE(240, 100);
-        const sf::Color GRID_ITEM_RECT_COLOR = re::Colors::BLACK_T;
+        const sf::Color GRID_ITEM_RECT_COLOR = re::Colors::BLACK_TRANSPARENT;
 
         const sf::Keyboard::Key INTERACTION_KEYS[] = {
             sf::Keyboard::Key::Left,

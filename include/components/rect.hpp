@@ -11,6 +11,7 @@ namespace re {
             sf::Color color;
 
         public:
+            Rect(const sf::Color& color);
             Rect(
                 const re::Transform& transform, 
                 const sf::Color& color

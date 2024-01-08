@@ -2,6 +2,12 @@
 
 
 re::Rect::Rect(
+    const sf::Color& color
+) : re::Rect("Rect", {}, color) {
+
+}
+
+re::Rect::Rect(
     const re::Transform& transform,
     const sf::Color& color
 ) : re::Rect("Rect", transform, color) { }
