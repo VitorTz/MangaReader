@@ -3,7 +3,7 @@
 
 re::Transform::Transform(
 
-) {
+) : scale(1.f, 1.f) {
     
 }
 
@@ -12,35 +12,29 @@ re::Transform::Transform(
     const sf::Vector2f& pos,
     const sf::Vector2f& size
 ) : pos(pos),
-    size(size) {
+    size(size),
+    scale({1.f, 1.f}) {
         
     }
 
 
 re::Transform::Transform(
     const sf::Vector2f& pos
-) : pos(pos) {
+) : pos(pos),
+    scale(1.f, 1.f) {
 
     }
 
+re::Transform::Transform(
+    const sf::Vector2f& pos,
+    const sf::Vector2f& size,
+    const sf::Vector2f& scale
+) : pos(pos),
+    size(size),
+    scale(scale) {
 
-const sf::Vector2f& re::Transform::getPos() const {
-    return this->pos;
-}
+    }
 
-void re::Transform::setPos(const sf::Vector2f& pos) {
-    this->pos = pos;
-}
-
-
-const sf::Vector2f& re::Transform::getSize() const {
-    return this->size;
-}
-
-
-void re::Transform::setSize(const sf::Vector2f& size) {
-    this->size = size;
-}
 
 
 float re::Transform::left() const {
@@ -159,11 +153,4 @@ void re::Transform::setHeight(const float height) {
     this->size.y = height;
 }
 
-bool re::Transform::collidePoint(const sf::Vector2f& pos) {
-    return (
-        pos.x >= this->left() &&
-        pos.x <= this->right() &&
-        pos.y >= this->top() &&
-        pos.y <= this->bottom()
-    );
-}
+

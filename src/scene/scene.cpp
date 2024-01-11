@@ -1,27 +1,26 @@
 #include "../../include/scene/scene.hpp"
 
 
-
 re::Scene::Scene(
-    const re::SceneId& sceneId,
+    const re::SceneId& id,
     const re::ChangeScene& changeScene
-) : sceneId(sceneId),
+) : id(id),
     changeScene(changeScene) {
 
     }
 
 
 re::Scene::~Scene() {
-
+    
 }
 
 
 void re::Scene::update(const float& dt) {
-    if (re::globals::screenHasFocus)
-        this->componentGroup.update(dt);
+    for (const auto& [componentName, component] : this->componentMap)
+        component->update(dt);
 }
 
-
 void re::Scene::draw(sf::RenderWindow& window) {
-    this->componentGroup.draw(window);
+    for (const auto& [componentName, component] : this->componentMap)
+        component->draw(window);
 }

@@ -1,31 +1,28 @@
-#pragma once
+#ifndef E1FD90DE_EA3F_4B81_B8E0_D06C727957C4
+#define E1FD90DE_EA3F_4B81_B8E0_D06C727957C4
 #include <string>
-#include <vector>
-#include <algorithm>
-#include "chapter.hpp"
-#include "../constants.hpp"
+#include <filesystem>
+#include "../util/util.hpp"
 
 
 namespace re {
 
 
-    std::string getCoverFile(const std::string& mangaName);
-
     class Manga {
 
         public:
-            const std::string path;
+            const std::filesystem::path path;
             const std::string name;
-            const std::string coverImagePath;
+            const std::string mangaCoverFile;
             std::size_t lastChapterReaded;
             bool isFavorite;
-            std::vector<re::Chapter*> chapters;
         
         public:
-            Manga(const std::filesystem::path& _path);
-            ~Manga();
-            std::string toString() const;
+            Manga(const std::filesystem::path& path); 
 
     };
     
 } // namespace re
+
+
+#endif /* E1FD90DE_EA3F_4B81_B8E0_D06C727957C4 */

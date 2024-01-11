@@ -1,38 +1,24 @@
-#pragma once
-#include <map>
-#include <cctype>
+#ifndef C29C0935_71F5_4385_B84E_0B84D1930A87
+#define C29C0935_71F5_4385_B84E_0B84D1930A87
 #include <vector>
-#include <string>
+#include <cctype>
 #include <filesystem>
+#include <algorithm>
+#include <numeric>
+#include "../constants.hpp"
 
 
 namespace re {
-
-    int extractNum(const std::string& s);
-
-    void split(const std::string& s, const char& sep, std::vector<std::string>& v);
-
-    std::string subStr(
-        const std::string& s, 
-        const std::size_t& start,
-        const std::size_t& end
-    );
-
-    template<typename K, typename V>
-    void deletePtrMap(std::map<K, V*>& v) {
-        for (const auto& pair : v) {
-            delete pair.second;
-        }
-        v.clear();       
-    }
-
-    template<typename T>
-    void deletePtrVector(std::vector<T*>& v) {
-        for (T* t : v)
-            delete t;
-        v.clear();
-    }
-
     
+    std::vector<std::string> dirFiles(const std::string& dir);
+    std::vector<std::string> dirFiles(const std::filesystem::path& path);
+    float extractNum(const std::string& s, const float& defaultValue);
+    std::vector<std::string> split(const std::string& s, const char& sep);
+    std::string getMangaCoverImg(const std::string& mangaName);
+
 } // namespace re
 
+
+
+
+#endif /* C29C0935_71F5_4385_B84E_0B84D1930A87 */

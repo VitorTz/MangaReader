@@ -1,27 +1,30 @@
-#pragma once
+#ifndef MANGA_READER_TRANSFORM_HPP
+#define MANGA_READER_TRANSFORM_HPP
 #include <SFML/System/Vector2.hpp>
+
 
 
 namespace re {
 
     class Transform {
 
-        private:
+        public:
             sf::Vector2f pos;
             sf::Vector2f size;
+            sf::Vector2f scale;
 
         public:
             Transform();
             Transform(const sf::Vector2f& pos);
             Transform(
                 const sf::Vector2f& pos,
+                const sf::Vector2f& size,
+                const sf::Vector2f& scale
+            );
+            Transform(
+                const sf::Vector2f& pos,
                 const sf::Vector2f& size
             );
-
-            const sf::Vector2f& getPos() const;
-            void setPos(const sf::Vector2f& pos);
-            const sf::Vector2f& getSize() const;
-            void setSize(const sf::Vector2f& size);
 
             float left() const;
             float right() const;
@@ -52,9 +55,9 @@ namespace re {
 
             bool collide(const re::Transform& t);
 
-            bool collidePoint(const sf::Vector2f& pos);
-
     };
     
 } // namespace re
 
+
+#endif
