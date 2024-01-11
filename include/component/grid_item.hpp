@@ -1,9 +1,9 @@
 #ifndef E3C6B64D_9874_4AE0_8705_8E77EA913AD1
 #define E3C6B64D_9874_4AE0_8705_8E77EA913AD1
-#include <memory>
 #include "component.hpp"
 #include "sprite.hpp"
 #include "rect.hpp"
+#include "paragraph.hpp"
 #include "../model/manga.hpp"
 
 
@@ -16,6 +16,7 @@ namespace re {
         private:
             std::shared_ptr<re::Manga> manga;
             re::Sprite image;
+            re::Paragraph text;
             re::Rect rect;
         
         public:

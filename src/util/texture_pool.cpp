@@ -18,6 +18,7 @@ void re::TexturePool::load(const std::string& path) {
             {path, std::make_unique<sf::Texture>()}
         );
         re::TexturePool::m.unlock();
+        texture->second->setSmooth(true);
         texture->second->loadFromFile(path);
     }
 

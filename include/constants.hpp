@@ -11,6 +11,7 @@
 
 namespace re {
 
+    // window
     const int SCREEN_WIDTH = 1280;
     const int SCREEN_HEIGHT = 720;
     const sf::Vector2f SCREEN_SIZE(SCREEN_WIDTH, SCREEN_HEIGHT);
@@ -20,17 +21,34 @@ namespace re {
     const std::string SCREEN_TITLE = "Manga Reader";
     const int FPS = 60;
 
+    // reader
     const int IMAGE_MOVE_SPEED = 450;
 
+    // dir
     const std::string MANGA_DIR("/home/vitor/Documents/Mangas");
     const std::string MANGA_COVER_DIR("/home/vitor/Documents/MangaCover");
     const std::string DEFAULT_MANGA_COVER = "res/cover.png";
     const std::string MANGA_SETTINGS_DIR("settings");
     const std::string MANGAS_SETTINGS_FILE("settings/mangas_settings.txt");
 
-
+    // grid
     const sf::Vector2f GRID_ITEM_SIZE(240, 336);
     const sf::Vector2f GRID_RECT_SIZE(240, 100);
+
+    // font
+    enum FontId {
+        Thin,
+        Regular,
+        Medium,
+        Bold
+    };
+
+    const std::map<re::FontId, std::string> fontPathById = {
+        {re::FontId::Thin, "res/font/Roboto-Thin.ttf"},
+        {re::FontId::Regular, "res/font/Roboto-Regular.ttf"},
+        {re::FontId::Medium, "res/font/Roboto-Medium.ttf"},
+        {re::FontId::Bold, "res/font/Roboto-Bold.ttf"}
+    };
 
     
 } // namespace re

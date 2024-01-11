@@ -47,6 +47,8 @@ void close() {
         }
         f.close();
     }
+    re::TexturePool::rmvAll();
+    re::FontPool::rmvAll();
 }
 
 
