@@ -1,9 +1,6 @@
 #ifndef C7997E6A_D1C7_4985_A378_347C722CF0F8
 #define C7997E6A_D1C7_4985_A378_347C722CF0F8
-#include <SFML/Graphics.hpp>
-#include <memory>
 #include "../scene/scenes.hpp"
-#include "../constants.hpp"
 
 
 namespace re {

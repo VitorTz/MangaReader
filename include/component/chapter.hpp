@@ -1,9 +1,5 @@
 #ifndef B076B339_290B_4F44_B01C_1EEB6534AE49
 #define B076B339_290B_4F44_B01C_1EEB6534AE49
-#include <filesystem>
-#include <vector>
-#include <memory>
-#include <iostream>
 #include "component.hpp"
 #include "sprite.hpp"
 #include "../thread-pool/include/BS_thread_pool.hpp"

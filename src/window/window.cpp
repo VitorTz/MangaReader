@@ -41,6 +41,7 @@ void re::Window::handleInput() {
                 break;
             case sf::Event::KeyPressed:
                 re::pressedKeys.push_back(e.key.code);
+                break;
             default:
                 break;
         }
@@ -49,8 +50,11 @@ void re::Window::handleInput() {
 
 
 void re::Window::update() {
+    re::hasFocus = this->window.hasFocus();
     const float dt = this->clock.restart().asSeconds();
-    this->scene->update(dt);
+    re::currentTime += dt;
+    if (re::hasFocus)
+        this->scene->update(dt);
 }
 
 

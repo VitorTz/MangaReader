@@ -1,6 +1,4 @@
-#include "../include/window/window.hpp"
-#include "../include/globals.hpp"
-#include <fstream>
+#include "../include/manga_reader.hpp"
 
 
 void init() {

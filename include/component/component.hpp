@@ -3,10 +3,12 @@
 #include <SFML/Graphics.hpp>
 #include <algorithm>
 #include <cmath>
+#include <filesystem>
 #include <string>
 #include <memory>
 #include <vector>
 #include <map>
+#include <fstream>
 #include <iostream>
 #include "../util/util.hpp"
 #include "../util/transform.hpp"

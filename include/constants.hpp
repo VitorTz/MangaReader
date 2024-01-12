@@ -35,6 +35,10 @@ namespace re {
     const sf::Vector2f GRID_ITEM_SIZE(240, 336);
     const sf::Vector2f GRID_RECT_SIZE(240, 100);
 
+    // notification
+
+    const sf::Vector2f NOTIFICATION_SIZE(400, 250);
+    
     // font
     enum FontId {
         Thin,

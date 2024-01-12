@@ -8,11 +8,21 @@ re::Paragraph::Paragraph(
     const re::FontId& font,
     const sf::Color& color,
     const std::size_t& maxWidth
-) : re::Component("Paragraph", transform) {
+) : re::Component("Paragraph", transform),
+    size(size),
+    font(font),
+    color(color),
+    maxWidth(maxWidth) {
+    this->changeTxt(txt);
+}
+
+
+void re::Paragraph::changeTxt(const std::string& txt) {
+    this->lines.clear();
     const std::size_t txtLenght = txt.size();
-    const sf::Vector2f txtDimension = re::Text::strSize(txt, size, font);
-    const int lines = maxWidth == 0 ? 1 : std::round(txtDimension.x / maxWidth + 0.5);
-    const int charPerLine = txtLenght / lines;
+    const sf::Vector2f txtDimension = re::Text::strSize(txt, this->size, this->font);
+    const std::size_t lines = this->maxWidth == 0 ? 1 : std::round(txtDimension.x / this->maxWidth + 0.5);
+    const std::size_t charPerLine = txtLenght / lines;
     
     std::vector<std::string> words = re::split(txt, ' ');
     std::string currentLine;
@@ -22,7 +32,7 @@ re::Paragraph::Paragraph(
             currentLine += ' ';
         } else {
             this->lines.push_back(
-                std::make_unique<re::Text>(currentLine, re::Transform(), size, font, color)
+                std::make_unique<re::Text>(currentLine, re::Transform(), this->size, this->font, this->color)
             );
             currentLine = word;
             currentLine += ' ';
@@ -30,7 +40,7 @@ re::Paragraph::Paragraph(
     }
     if (!currentLine.empty()) {
         this->lines.push_back(
-            std::make_unique<re::Text>(currentLine, re::Transform(), size, font, color)
+            std::make_unique<re::Text>(currentLine, re::Transform(), this->size, this->font, this->color)
         );
     };
     this->transform.setWidth(txtDimension.x / lines);

@@ -10,6 +10,10 @@ namespace re {
     class Paragraph : public re::Component {
 
         private:
+            const std::size_t size;
+            const re::FontId font;
+            const sf::Color color;
+            const std::size_t maxWidth;
             std::vector<std::unique_ptr<re::Text>> lines;
         
         public:
@@ -21,6 +25,7 @@ namespace re {
                 const sf::Color& color,
                 const std::size_t& maxWidth = 0
             );
+            void changeTxt(const std::string& s);
             void draw(sf::RenderWindow& window) override;
 
     };
