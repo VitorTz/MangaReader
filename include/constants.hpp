@@ -28,7 +28,7 @@ namespace re {
     const int IMAGE_MOVE_SPEED = 450;
 
     // dir
-    const std::string MANGA_PARENT_DIR("manga");
+    const std::string MANGA_PARENT_DIR("mangas");
     const std::string MANGA_DIR("mangas/manga");
     const std::string MANGA_COVER_DIR("mangas/capa");
     

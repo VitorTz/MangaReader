@@ -1,6 +1,28 @@
-# coloque seus mangas nesta pasta
 
+# Exemplo de utilizaçao
 
-1. Crie uma pasta chamada **capa** (caso não exista) e coloque as imagens de capa de cada manga, o nome da imagem deve ser igual ao nome da pasta que contem os capitulos do manga.
+Dentro da pasta [mangas](mangas) crie as seguintes pastas
 
-2. Crie uma pasta chamada **manga** (caso não exista) e coloque os seus mangas.
+![](../res/images/pastas.png)
+
+Na pasta **capa** coloque as imagens de capa como na imagem
+
+![](../res/images/capas.png)
+
+Na pasta manga coloque os mangas
+
+![](../res/images/mangas.png)
+
+O nome em cada imagem deve ser exatamente o mesmo
+que o nome na pasta correspondente de seu manga
+
+Dentro de cada pasta de cada manga estão uma pasta
+para cada capitulo, é importante que **cada capitulo tenha um número associado** para seja possível ler o manga em ordem.
+
+Exemplo: Dentro da pasta de Attack on Titan existe uma pasta para cada capitulo e cada pasta tem o número do capitulo em seu nome
+
+![](../res/images/capitulos.png)
+
+Dentro de cada pasta de cada capitulo as imagens devem estar enumeradas em uma ordem que reflita a ordem de leitura das imagens
+
+![](../res/images/imagens.png)
