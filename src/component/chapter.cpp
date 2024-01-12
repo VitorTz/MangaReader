@@ -3,7 +3,15 @@
 
 re::Chapter::Chapter(
     const std::string& path 
-) : re::Component(path) {
+) : re::Component(path),
+    text(
+        "Chapter " + path + " has no images", 
+        {}, 
+        20, 
+        re::FontId::Bold, 
+        sf::Color::White
+    ) {
+    this->text.transform.setCenter(re::SCREEN_CENTER);
 
     for (const std::string& s : re::dirFiles(path))
         this->images.push_back(std::make_unique<re::Sprite>(s));
@@ -57,7 +65,11 @@ void re::Chapter::update(const float& dt) {
 
 
 void re::Chapter::draw(sf::RenderWindow& window) {
-    for (auto& image : this->images)
-        if (image->transform.collide(re::SCREEN_RECT))
-            image->draw(window);
+    if (!this->images.empty()) {
+        for (auto& image : this->images)
+            if (image->transform.collide(re::SCREEN_RECT))
+                image->draw(window);
+    } else {
+        this->text.draw(window);
+    }
 }

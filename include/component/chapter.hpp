@@ -2,6 +2,7 @@
 #define B076B339_290B_4F44_B01C_1EEB6534AE49
 #include "component.hpp"
 #include "sprite.hpp"
+#include "text.hpp"
 #include "../thread-pool/include/BS_thread_pool.hpp"
 
 
@@ -10,6 +11,7 @@ namespace re {
     class Chapter : public re::Component {
 
         private:
+            re::Text text;
             std::vector<std::unique_ptr<re::Sprite>> images;
         
         private:

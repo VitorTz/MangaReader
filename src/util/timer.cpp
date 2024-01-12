@@ -4,8 +4,7 @@
 
 re::Timer::Timer(
     const float& timeInSeconds
-) : startedTime(re::currentTime),
-    timeInSeconds(timeInSeconds),
+) : timeInSeconds(timeInSeconds),
     _isRunning(false) {
 
     }
@@ -13,18 +12,18 @@ re::Timer::Timer(
 
 void re::Timer::start() {
     this->_isRunning = true;
-    this->startedTime = re::currentTime;
+    this->startedTime = re::globals::currentTime;
 }
 
 
 void re::Timer::update() {
     if (this->_isRunning)
-        this->_isRunning = !(re::currentTime - this->startedTime >= this->timeInSeconds);        
+        this->_isRunning = !(re::globals::currentTime - this->startedTime >= this->timeInSeconds);        
 }
 
 
 void re::Timer::reset() {
-    this->startedTime = re::currentTime;
+    this->startedTime = re::globals::currentTime;
     this->start();
 }
 

@@ -12,6 +12,7 @@
 #include "grid.hpp"
 #include "text.hpp"
 #include "paragraph.hpp"
+#include "notification.hpp"
 
 
 #endif /* ED9DA49A_EAF1_4741_941C_8E3BF4AA6FD2 */

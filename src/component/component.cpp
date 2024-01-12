@@ -19,16 +19,14 @@ re::Component::Component(
 }
 
 
-re::Component::~Component() {
-
-}
+re::Component::~Component() = default;
 
 
 void re::Component::update(const float& dt) {
-    return;
+ 
 }
 
 
 void re::Component::draw(sf::RenderWindow& window) {
-    return;
+ 
 }

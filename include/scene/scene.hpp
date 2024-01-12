@@ -1,6 +1,7 @@
 #ifndef DD23C6ED_905A_430B_A3A0_F71BB6727A9B
 #define DD23C6ED_905A_430B_A3A0_F71BB6727A9B
 #include "../component/components.hpp"
+#include "../util/notification_manager.hpp"
 
 
 namespace re {

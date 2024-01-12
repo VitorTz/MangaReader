@@ -11,3 +11,8 @@ re::Manga::Manga(
     
     }
 
+
+void re::Manga::set(const re::MangaInfo& i) {
+    this->lastChapterReaded = i.lastChapterReaded;
+    this->isFavorite = i.isFavorite;
+}

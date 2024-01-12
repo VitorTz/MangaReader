@@ -10,6 +10,7 @@ namespace re {
         public:
             Reader(const re::ChangeScene& changeScene);
             void update(const float& dt) override;
+            
     };
     
 } // namespace re

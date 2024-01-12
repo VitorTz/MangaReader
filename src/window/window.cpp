@@ -32,7 +32,7 @@ re::Window::Window(
 
 
 void re::Window::handleInput() {
-    re::pressedKeys.clear();
+    re::globals::pressedKeys.clear();
     sf::Event e;
     while (this->window.pollEvent(e)) {
         switch (e.type) {
@@ -40,7 +40,7 @@ void re::Window::handleInput() {
                 this->window.close();
                 break;
             case sf::Event::KeyPressed:
-                re::pressedKeys.push_back(e.key.code);
+                re::globals::pressedKeys.push_back(e.key.code);
                 break;
             default:
                 break;
@@ -50,17 +50,19 @@ void re::Window::handleInput() {
 
 
 void re::Window::update() {
-    re::hasFocus = this->window.hasFocus();
     const float dt = this->clock.restart().asSeconds();
-    re::currentTime += dt;
-    if (re::hasFocus)
+    re::globals::currentTime += dt;
+    if (this->window.hasFocus()) {
+        re::NotificationManager::update(dt);
         this->scene->update(dt);
+    }
 }
 
 
 void re::Window::draw() {
     this->window.clear(re::SCREEN_BG_COLOR);
     this->scene->draw(this->window);
+    re::NotificationManager::draw(this->window);
     this->window.display();
 }
 

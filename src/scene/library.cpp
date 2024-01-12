@@ -14,7 +14,6 @@ re::Library::Library(
             )
         }
     );
-    
 }
 
 
@@ -22,9 +21,9 @@ void re::Library::update(const float& dt) {
     re::Scene::update(dt);
     auto& component = this->componentMap.at("Grid");
     re::Grid* grid = (re::Grid*) component.get();
-    const re::Item item = grid->getItem();
-    if (item.isSelected) {
-        re::currentManga = item.name;
+    const std::string mangaName = grid->getItem();
+    if (!mangaName.empty()) {
+        re::globals::currentManga = mangaName;        
         this->changeScene(re::SceneId::ReaderId);
     }
 }

@@ -10,9 +10,7 @@ re::Scene::Scene(
     }
 
 
-re::Scene::~Scene() {
-    
-}
+re::Scene::~Scene() = default;
 
 
 void re::Scene::update(const float& dt) {

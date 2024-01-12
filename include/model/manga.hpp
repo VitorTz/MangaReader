@@ -3,6 +3,7 @@
 #include <string>
 #include <filesystem>
 #include "../util/util.hpp"
+#include "../util/manga_info.hpp"
 
 
 namespace re {
@@ -18,7 +19,8 @@ namespace re {
             bool isFavorite;
         
         public:
-            Manga(const std::filesystem::path& path); 
+            Manga(const std::filesystem::path& path);
+            void set(const re::MangaInfo& i);
 
     };
     

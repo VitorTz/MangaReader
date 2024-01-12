@@ -9,17 +9,17 @@ std::mutex re::TexturePool::m;
 
 void re::TexturePool::load(const std::string& path) {
     re::TexturePool::m.lock();
-    const bool contains = re::TexturePool::textureMap.find(path) != re::TexturePool::textureMap.end();
+    const bool contains = re::contains(re::TexturePool::textureMap, path);
     re::TexturePool::m.unlock();
 
     if (!contains) {
         re::TexturePool::m.lock();
-        const auto [texture, success] = re::TexturePool::textureMap.insert(
+        const auto [pair, success] = re::TexturePool::textureMap.insert(
             {path, std::make_unique<sf::Texture>()}
         );
         re::TexturePool::m.unlock();
-        texture->second->setSmooth(true);
-        texture->second->loadFromFile(path);
+        pair->second->setSmooth(true);
+        pair->second->loadFromFile(path);
     }
 
 }
@@ -30,7 +30,7 @@ void re::TexturePool::load(const std::string& path, sf::Sprite& sprite) {
 }
 
 void re::TexturePool::rmv(const std::string& path) {
-    if (re::TexturePool::textureMap.find(path) != re::TexturePool::textureMap.end())
+    if (re::contains(re::TexturePool::textureMap, path))
         re::TexturePool::textureMap.erase(path);
 }
 

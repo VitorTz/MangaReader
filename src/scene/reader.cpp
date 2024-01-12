@@ -4,7 +4,7 @@
 re::Reader::Reader(
     const re::ChangeScene& changeScene 
 ) : re::Scene(re::SceneId::ReaderId, changeScene) {
-    std::shared_ptr<re::Manga> manga = re::mangaMap.at(re::currentManga);
+    std::shared_ptr<re::Manga> manga = re::globals::mangaMap.at(re::globals::currentManga);
     this->componentMap.insert(
         {
             manga->name, 
@@ -16,7 +16,7 @@ re::Reader::Reader(
 void re::Reader::update(const float& dt) {
     re::Scene::update(dt);
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
-        re::currentManga = "";
+        re::globals::currentManga = "";
         this->changeScene(re::SceneId::LibraryId);
     }
 }

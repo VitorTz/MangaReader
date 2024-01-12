@@ -8,9 +8,9 @@ re::Text::Text(
     const re::FontId& font,
     const sf::Color& color    
 ) : re::Component(txt, transform) {
+        this->text.setString(txt);
         this->text.setFillColor(color);
         this->text.setCharacterSize(size);
-        this->text.setString(txt);
         re::FontPool::load(this->text, font);
         this->transform.size = re::Text::strSize(this->text);
     }

@@ -6,14 +6,11 @@
 #include "component.hpp"
 #include "grid_item.hpp"
 #include "border.hpp"
+#include "text.hpp"
+#include "../util/notification_manager.hpp"
 
 
 namespace re {
-
-    typedef struct Item {
-        const std::string name;
-        const bool isSelected;
-    } Item;
 
     class Grid : public re::Component {
 
@@ -23,11 +20,14 @@ namespace re {
             const std::size_t columns;
             const std::size_t gap;
             const sf::Vector2f itemSize;
+            re::Text text;
             re::Border border;
             std::size_t currentItemIndex;
         
         private:
-            void resetPos();            
+            void resetPos();      
+            void sortItemsByFavorite();  
+            void favoriteCurrentItem();    
             void changeCurrentItem(const std::size_t& n);
         
         public:
@@ -38,7 +38,7 @@ namespace re {
             );
             void update(const float& dt) override;
             void draw(sf::RenderWindow& window) override;
-            re::Item getItem() const;
+            std::string getItem() const;
     };
     
 } // namespace re

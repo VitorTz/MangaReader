@@ -16,6 +16,7 @@ void re::Rect::changeColor(const sf::Color& color) {
 
 
 void re::Rect::draw(sf::RenderWindow& window) {
+    this->rect.setSize(this->transform.size);
     this->rect.setPosition(this->transform.pos);
     window.draw(this->rect);
 }

@@ -2,11 +2,10 @@
 #define MANGA_READER_CONSTANTS_HPP
 #include <SFML/System/Vector2.hpp>
 #include <SFML/Window/Keyboard.hpp>
-#include <map>
 #include <string>
+#include <map>
 #include "util/transform.hpp"
 #include "colors.hpp"
-
 
 
 namespace re {
@@ -21,23 +20,24 @@ namespace re {
     const std::string SCREEN_TITLE = "Manga Reader";
     const int FPS = 60;
 
+    // res
+    const std::string BOOKMARK_0 = "res/images/bookmark_0.png";
+    const std::string BOOKMARK_1 = "res/images/bookmark_1.png";
+
     // reader
     const int IMAGE_MOVE_SPEED = 450;
 
     // dir
     const std::string MANGA_DIR("/home/vitor/Documents/Mangas");
     const std::string MANGA_COVER_DIR("/home/vitor/Documents/MangaCover");
-    const std::string DEFAULT_MANGA_COVER = "res/cover.png";
+    
+    const std::string DEFAULT_MANGA_COVER = "res/images/cover.png";
     const std::string MANGA_SETTINGS_DIR("settings");
-    const std::string MANGAS_SETTINGS_FILE("settings/mangas_settings.txt");
+    const std::string MANGAS_SETTINGS_FILE(MANGA_SETTINGS_DIR + "/mangas.txt");
 
     // grid
     const sf::Vector2f GRID_ITEM_SIZE(240, 336);
     const sf::Vector2f GRID_RECT_SIZE(240, 100);
-
-    // notification
-
-    const sf::Vector2f NOTIFICATION_SIZE(400, 250);
     
     // font
     enum FontId {

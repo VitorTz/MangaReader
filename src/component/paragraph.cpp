@@ -43,9 +43,12 @@ void re::Paragraph::changeTxt(const std::string& txt) {
             std::make_unique<re::Text>(currentLine, re::Transform(), this->size, this->font, this->color)
         );
     };
-    this->transform.setWidth(txtDimension.x / lines);
-    for (auto& line : this->lines) {
+    this->transform.size.x = 0;
+    for (std::unique_ptr<re::Text>& line : this->lines) {
         this->transform.setHeight(this->transform.height() + line->transform.height() + 10);
+        const float w = line->transform.width();
+        if (w > this->transform.size.x) 
+            this->transform.size.x = w;
     }
 }
 
