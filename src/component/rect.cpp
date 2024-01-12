@@ -10,7 +10,7 @@ re::Rect::Rect(
 }
 
 
-void re::Rect::changeColor(const sf::Color& color) {
+inline void re::Rect::changeColor(const sf::Color& color) {
     this->rect.setFillColor(color);
 }
 

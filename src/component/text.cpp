@@ -16,6 +16,21 @@ re::Text::Text(
     }
 
 
+re::Text::Text(
+    const std::string& txt,
+    const re::Transform& transform,
+    const re::style::TextStyle& style
+) : re::Text(
+    txt, 
+    transform,
+    style.size,
+    style.font,
+    style.color
+) {
+
+}
+
+
 sf::Vector2f re::Text::strSize(
     const sf::Text& text 
 ) {

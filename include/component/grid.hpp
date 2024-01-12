@@ -29,6 +29,7 @@ namespace re {
             void sortItemsByFavorite();  
             void favoriteCurrentItem();    
             void changeCurrentItem(const std::size_t& n);
+            std::size_t indexOfItem(const std::string& mangaName);
         
         public:
             Grid(

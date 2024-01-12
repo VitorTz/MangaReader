@@ -3,6 +3,7 @@
 #include <map>
 #include <memory>
 #include <string>
+#include <set>
 #include <SFML/Window/Keyboard.hpp>
 #include "model/manga.hpp"
 
@@ -11,7 +12,7 @@ namespace re::globals {
 
     extern std::map<std::string, std::shared_ptr<re::Manga>> mangaMap;
     extern std::string currentManga;
-    extern std::vector<sf::Keyboard::Key> pressedKeys;
+    extern std::set<sf::Keyboard::Key> pressedKeys;
     extern float currentTime;
     
 } // namespace re

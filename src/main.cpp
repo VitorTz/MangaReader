@@ -3,8 +3,9 @@
 
 void init() {
 
-    re::checkIfFolderExists(re::MANGA_DIR);
-    re::checkIfFolderExists(re::MANGA_COVER_DIR);
+    re::createDir(re::MANGA_PARENT_DIR);
+    re::createDir(re::MANGA_DIR);
+    re::createDir(re::MANGA_COVER_DIR);
     re::createDir(re::MANGA_SETTINGS_DIR);
     
     for (const std::filesystem::path& p : re::dirPaths(re::MANGA_DIR)) {

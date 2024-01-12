@@ -40,7 +40,7 @@ void re::Window::handleInput() {
                 this->window.close();
                 break;
             case sf::Event::KeyPressed:
-                re::globals::pressedKeys.push_back(e.key.code);
+                re::globals::pressedKeys.insert(e.key.code);
                 break;
             default:
                 break;

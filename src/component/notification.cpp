@@ -6,7 +6,7 @@ re::Notification::Notification(
 ) : re::Component("Notification", {}),
     border({}, 2, re::Colors::PINK_200),
     background({}, re::Colors::GREY_200),
-    text(txt, {}, 16, re::FontId::Regular, sf::Color::White, 500) {
+    text(txt, {}, re::style::notificationTxtStyle, 500) {
     this->transform.setWidth(this->text.transform.width() + 50);
     this->transform.setHeight(this->text.transform.height() + 30);
     this->transform.setLeft(re::SCREEN_WIDTH + 20);
@@ -22,7 +22,7 @@ re::Notification::Notification(
 void re::Notification::update(const float& dt) {
     const float right = re::SCREEN_WIDTH - 20;
     if (this->transform.right() > right)
-        this->transform.moveX(-dt * 650);
+        this->transform.moveX(-dt * 1250);
 }
 
 

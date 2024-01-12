@@ -16,6 +16,7 @@
 #include "../util/font_pool.hpp"
 #include "../constants.hpp"
 #include "../globals.hpp"
+#include "../style/style.hpp"
 
 
 namespace re {

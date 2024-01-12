@@ -7,9 +7,7 @@ re::Chapter::Chapter(
     text(
         "Chapter " + path + " has no images", 
         {}, 
-        20, 
-        re::FontId::Bold, 
-        sf::Color::White
+        re::style::headerTxtStyle
     ) {
     this->text.transform.setCenter(re::SCREEN_CENTER);
 

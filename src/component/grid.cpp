@@ -17,7 +17,8 @@ re::Grid::Grid(
     
     for (const auto& [mangaName, manga] : re::globals::mangaMap)
         this->items.push_back(std::make_unique<re::GridItem>(manga));
-        
+    
+    this->sortItemsByFavorite();
     this->resetPos();
 }
 
@@ -46,7 +47,6 @@ void re::Grid::sortItemsByFavorite() {
 }
 
 void re::Grid::resetPos() {
-    this->sortItemsByFavorite();
     const float deltaY = (this->currentItemIndex / this->columns) * this->itemSize.y;
     int i = 0;
     for (std::unique_ptr<re::GridItem>& item : this->items) {  
@@ -63,12 +63,21 @@ void re::Grid::resetPos() {
 }
 
 
+std::size_t re::Grid::indexOfItem(const std::string& mangaName) {
+    for (std::size_t i = 0; i < this->items.size(); i++) {
+        std::unique_ptr<re::GridItem>& item = this->items.at(i);
+        if (item->name == mangaName) return i;
+    }
+    return 0;
+}
+
 void re::Grid::favoriteCurrentItem() {
     if (!this->items.empty()) {
         const std::string& mangaName = this->items.at(this->currentItemIndex)->name;
         std::shared_ptr<re::Manga>& manga = re::globals::mangaMap.at(mangaName);
         manga->isFavorite = !manga->isFavorite;
-        this->currentItemIndex = 0;
+        this->sortItemsByFavorite();
+        this->currentItemIndex = this->indexOfItem(mangaName);
         this->resetPos();
         std::string r = manga->isFavorite ? "" : "not ";
         std::string msg = manga->name + " marked as " + r + "favorite";
@@ -103,31 +112,29 @@ void re::Grid::update(const float& dt) {
 
 
 void re::Grid::draw(sf::RenderWindow& window) {
-    if (!this->items.empty()) {
-        for (std::unique_ptr<re::GridItem>& item : this->items)
-            if (item->transform.collide(re::SCREEN_RECT))
-                item->draw(window);
-        
-        if (!this->items.empty()) {
-            std::unique_ptr<re::GridItem>& item = this->items.at(this->currentItemIndex);
-            const std::size_t& t = this->border.getThickness();
-            this->border.setThickness(3);
-            this->border.transform.pos = item->transform.pos;
-            this->border.draw(window);
-            this->border.setThickness(t);
-        }
-    } else {
+    if (this->items.empty()) {
         this->text.draw(window);
+        return;
+    }
+
+    for (std::unique_ptr<re::GridItem>& item : this->items)
+        if (item->transform.collide(re::SCREEN_RECT))
+            item->draw(window);
+    
+    if (!this->items.empty()) {
+        std::unique_ptr<re::GridItem>& item = this->items.at(this->currentItemIndex);
+        const std::size_t& t = this->border.getThickness();
+        this->border.setThickness(4);
+        this->border.transform.pos = item->transform.pos;
+        this->border.draw(window);
+        this->border.setThickness(t);
     }
 }
 
 
 std::string re::Grid::getItem() const {
-    std::string r;
-    if (
-        !this->items.empty() && 
-        sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)
-    )
+    std::string r;    
+    if (!this->items.empty() && sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))
         r = this->items.at(this->currentItemIndex)->name;
     return r;
 }

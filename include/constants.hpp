@@ -28,8 +28,9 @@ namespace re {
     const int IMAGE_MOVE_SPEED = 450;
 
     // dir
-    const std::string MANGA_DIR("/home/vitor/Documents/Mangas");
-    const std::string MANGA_COVER_DIR("/home/vitor/Documents/MangaCover");
+    const std::string MANGA_PARENT_DIR("manga");
+    const std::string MANGA_DIR("mangas/manga");
+    const std::string MANGA_COVER_DIR("mangas/capa");
     
     const std::string DEFAULT_MANGA_COVER = "res/images/cover.png";
     const std::string MANGA_SETTINGS_DIR("settings");

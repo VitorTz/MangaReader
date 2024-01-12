@@ -17,6 +17,35 @@ re::Paragraph::Paragraph(
 }
 
 
+re::Paragraph::Paragraph(
+    const std::string& txt,
+    const re::Transform& transform,
+    const re::style::TextStyle& style,
+    const std::size_t& maxWidth
+) : re::Paragraph(
+    txt,
+    transform,
+    style.size,
+    style.font,
+    style.color,
+    maxWidth
+) { 
+
+}
+
+
+inline void re::Paragraph::addLine(const std::string& s) {
+    this->lines.push_back(
+        std::make_unique<re::Text>(
+            s, 
+            re::Transform(), 
+            this->size, 
+            this->font, 
+            this->color
+        )
+    );
+}
+
 void re::Paragraph::changeTxt(const std::string& txt) {
     this->lines.clear();
     const std::size_t txtLenght = txt.size();
@@ -27,22 +56,17 @@ void re::Paragraph::changeTxt(const std::string& txt) {
     std::vector<std::string> words = re::split(txt, ' ');
     std::string currentLine;
     for (const std::string& word : words) {
-        if (currentLine.size() + word.size() <= charPerLine+1) {
-            currentLine += word;
-            currentLine += ' ';
+        if (currentLine.size() + word.size() <= charPerLine + 1) {
+            currentLine += word + " ";
         } else {
-            this->lines.push_back(
-                std::make_unique<re::Text>(currentLine, re::Transform(), this->size, this->font, this->color)
-            );
-            currentLine = word;
-            currentLine += ' ';
+            this->addLine(currentLine);
+            currentLine = word + " ";
         }
     }
     if (!currentLine.empty()) {
-        this->lines.push_back(
-            std::make_unique<re::Text>(currentLine, re::Transform(), this->size, this->font, this->color)
-        );
+        this->addLine(currentLine);
     };
+
     this->transform.size.x = 0;
     for (std::unique_ptr<re::Text>& line : this->lines) {
         this->transform.setHeight(this->transform.height() + line->transform.height() + 10);

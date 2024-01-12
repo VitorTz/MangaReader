@@ -16,13 +16,13 @@ void re::NotificationManager::showNotification(const std::string& txt) {
 
 void re::NotificationManager::update(const float& dt) {
     if (re::NotificationManager::timer.isRunning()) {
+        re::NotificationManager::timer.update();
         re::NotificationManager::notification->update(dt);
     }
 }
 
 void re::NotificationManager::draw(sf::RenderWindow& window) {
     if (re::NotificationManager::timer.isRunning()) {
-        re::NotificationManager::timer.update();
         re::NotificationManager::notification->draw(window);
     }
 }

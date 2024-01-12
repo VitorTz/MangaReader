@@ -5,6 +5,7 @@
 #include "component.hpp"
 #include "sprite.hpp"
 #include "chapter.hpp"
+#include "text.hpp"
 #include "../model/manga.hpp"
 
 
@@ -21,6 +22,7 @@ namespace re {
             std::shared_ptr<re::Manga> manga;
             std::vector<std::string> chapters;
             re::CurrentChapter currentChapter;
+            re::Text text;
         
         private:
             void loadChapter(const std::size_t& n);

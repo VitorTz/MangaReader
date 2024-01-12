@@ -22,6 +22,11 @@ namespace re {
                 const re::FontId& font,
                 const sf::Color& color
             );
+            Text(
+                const std::string& txt,
+                const re::Transform& transform,
+                const re::style::TextStyle& style
+            );
             void draw(sf::RenderWindow& window) override;
 
     };

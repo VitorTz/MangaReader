@@ -20,7 +20,6 @@ namespace re {
             static void rmv(const re::FontId& f);
             static void rmvAll();
 
-
     };
 
     

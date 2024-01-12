@@ -37,6 +37,13 @@ namespace re {
         return m.find(k) != m.end();
     }
 
+    template<typename T>
+    bool contains(const std::vector<T>& v, const T& i) {
+        for (const T& t : v)
+            if (t == i) return true;
+        return false;
+    }
+
     void checkIfFolderExists(const std::string& n);
     void createDir(const std::string& n);
 
