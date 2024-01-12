@@ -48,10 +48,10 @@ namespace re {
     };
 
     const std::map<re::FontId, std::string> fontPathById = {
-        {re::FontId::Thin, "res/font/Roboto-Thin.ttf"},
-        {re::FontId::Regular, "res/font/Roboto-Regular.ttf"},
-        {re::FontId::Medium, "res/font/Roboto-Medium.ttf"},
-        {re::FontId::Bold, "res/font/Roboto-Bold.ttf"}
+        {re::FontId::Thin, "res/font/Poppins-Light.ttf"},
+        {re::FontId::Regular, "res/font/Poppins-Regular.ttf"},
+        {re::FontId::Medium, "res/font/Poppins-Medium.ttf"},
+        {re::FontId::Bold, "res/font/Poppins-Bold.ttf"}
     };
 
     

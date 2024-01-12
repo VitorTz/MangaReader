@@ -37,6 +37,11 @@ sf::Vector2f re::Text::strSize(
 
 
 void re::Text::draw(sf::RenderWindow& window) {
-    this->text.setPosition(this->transform.pos);
+    this->text.setPosition(
+        {
+            std::round(this->transform.pos.x),
+            std::round(this->transform.pos.y)
+        }
+    );
     window.draw(this->text);
 }

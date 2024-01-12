@@ -31,7 +31,7 @@ re::GridItem::GridItem(
 ) : re::Component(manga->name, {{}, {re::GRID_ITEM_SIZE}}),
     manga(manga),
     image(manga->mangaCoverFile),
-    text(manga->name, {}, 18, re::FontId::Medium, sf::Color::White, re::GRID_RECT_SIZE.x),
+    text(manga->name, {}, 18, re::FontId::Regular, sf::Color::White, re::GRID_RECT_SIZE.x),
     rect({{}, {re::GRID_RECT_SIZE.x, text.transform.height() + 20}}, re::Colors::BLACK_TRANSPARENT) {
     this->image.load();
 }

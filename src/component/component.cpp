@@ -11,7 +11,6 @@ re::Component::Component(
     }
 
 
-
 re::Component::Component(
     const std::string& name 
 ) : re::Component(name, {}) {

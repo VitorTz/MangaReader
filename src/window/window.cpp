@@ -51,8 +51,8 @@ void re::Window::handleInput() {
 
 void re::Window::update() {
     const float dt = this->clock.restart().asSeconds();
-    re::globals::currentTime += dt;
     if (this->window.hasFocus()) {
+        re::globals::currentTime += dt;
         re::NotificationManager::update(dt);
         this->scene->update(dt);
     }
