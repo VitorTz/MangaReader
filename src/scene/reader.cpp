@@ -4,7 +4,7 @@
 re::Reader::Reader(
     const re::ChangeScene& changeScene 
 ) : re::Scene(re::SceneId::ReaderId, changeScene) {
-    std::shared_ptr<re::Manga> manga = re::globals::mangaMap.at(re::globals::currentManga);
+    std::shared_ptr<re::Manga> manga = re::globals::mangaByName.at(re::globals::currentManga);
     this->componentMap.insert(
         {
             manga->name, 

@@ -14,6 +14,7 @@ re::Chapter::Chapter(
     for (const std::string& s : re::dirFiles(path))
         this->images.push_back(std::make_unique<re::Sprite>(s));
     
+    // github project -> https://github.com/bshoshany/thread-pool
     BS::thread_pool pool(4);
 
     pool.detach_loop<unsigned int>(

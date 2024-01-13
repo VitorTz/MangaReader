@@ -38,7 +38,6 @@ namespace re {
 
     // grid
     const sf::Vector2f GRID_ITEM_SIZE(240, 336);
-    const sf::Vector2f GRID_RECT_SIZE(240, 100);
     
     // font
     enum FontId {

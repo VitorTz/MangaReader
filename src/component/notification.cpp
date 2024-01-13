@@ -4,7 +4,7 @@
 re::Notification::Notification(
     const std::string& txt
 ) : re::Component("Notification", {}),
-    border({}, 2, re::Colors::PINK_200),
+    border({}, 2, re::Colors::PURPLE_200),
     background({}, re::Colors::GREY_200),
     text(txt, {}, re::style::notificationTxtStyle, 500) {
     this->transform.setWidth(this->text.transform.width() + 50);

@@ -5,7 +5,7 @@ Dentro da pasta [mangas](mangas) crie as seguintes pastas
 
 ![](../res/images/pastas.png)
 
-Na pasta **capa** coloque as imagens de capa como na imagem
+Na pasta **capa** coloque as imagens de capa
 
 ![](../res/images/capas.png)
 
@@ -13,7 +13,7 @@ Na pasta manga coloque os mangas
 
 ![](../res/images/mangas.png)
 
-O nome em cada imagem deve ser exatamente o mesmo
+O nome em cada imagem na pasta **capa** deve ser exatamente o mesmo
 que o nome na pasta correspondente de seu manga
 
 Dentro de cada pasta de cada manga estão uma pasta

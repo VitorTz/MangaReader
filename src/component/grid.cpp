@@ -11,11 +11,11 @@ re::Grid::Grid(
     gap(gap),
     itemSize({re::GRID_ITEM_SIZE.x + gap, re::GRID_ITEM_SIZE.y + gap}),
     text(re::MANGA_DIR + " is empty", {}, 20, re::FontId::Bold, sf::Color::White),
-    border({{}, re::GRID_ITEM_SIZE}, 1, re::Colors::PINK_200),
+    border({{}, re::GRID_ITEM_SIZE}, 1, re::Colors::PURPLE_200),
     currentItemIndex(0) {
     this->text.transform.setCenter(re::SCREEN_CENTER);
     
-    for (const auto& [mangaName, manga] : re::globals::mangaMap)
+    for (const auto& [mangaName, manga] : re::globals::mangaByName)
         this->items.push_back(std::make_unique<re::GridItem>(manga));
     
     this->sortItemsByFavorite();
@@ -74,7 +74,7 @@ std::size_t re::Grid::indexOfItem(const std::string& mangaName) {
 void re::Grid::favoriteCurrentItem() {
     if (!this->items.empty()) {
         const std::string& mangaName = this->items.at(this->currentItemIndex)->name;
-        std::shared_ptr<re::Manga>& manga = re::globals::mangaMap.at(mangaName);
+        std::shared_ptr<re::Manga>& manga = re::globals::mangaByName.at(mangaName);
         manga->isFavorite = !manga->isFavorite;
         this->sortItemsByFavorite();
         this->currentItemIndex = this->indexOfItem(mangaName);
