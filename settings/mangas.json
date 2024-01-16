@@ -1,0 +1,42 @@
+{
+    "A Wonderful New World": {
+        "isFavorite": false,
+        "lastChapterReaded": 84,
+        "name": "A Wonderful New World"
+    },
+    "Akira": {
+        "isFavorite": false,
+        "lastChapterReaded": 0,
+        "name": "Akira"
+    },
+    "Chainsaw Manga": {
+        "isFavorite": false,
+        "lastChapterReaded": 0,
+        "name": "Chainsaw Manga"
+    },
+    "Domestic Girlfriend": {
+        "isFavorite": false,
+        "lastChapterReaded": 0,
+        "name": "Domestic Girlfriend"
+    },
+    "Domestic Kanojo": {
+        "isFavorite": true,
+        "lastChapterReaded": 0,
+        "name": "Domestic Kanojo"
+    },
+    "Dorohedoro": {
+        "isFavorite": false,
+        "lastChapterReaded": 0,
+        "name": "Dorohedoro"
+    },
+    "Homunculus": {
+        "isFavorite": false,
+        "lastChapterReaded": 0,
+        "name": "Homunculus"
+    },
+    "Jujutsu Kaisen": {
+        "isFavorite": false,
+        "lastChapterReaded": 0,
+        "name": "Jujutsu Kaisen"
+    }
+}

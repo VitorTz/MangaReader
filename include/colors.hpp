@@ -6,10 +6,9 @@
 
 namespace re::Colors {
 
-    const sf::Color GREY_200(30, 30, 30);
-    const sf::Color GREY_400(78, 78, 78);        
-    const sf::Color PURPLE_200(189, 0, 255);
-    const sf::Color BLACK_TRANSPARENT(0, 0, 0, 200);
+    const sf::Color GREY_200(27, 27, 31);
+    const sf::Color PURPLE_200(64, 70, 124);
+    const sf::Color BLACK_TRANSPARENT(0, 0, 0, 160);
     
 } // namespace re::Colors
 

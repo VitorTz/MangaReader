@@ -10,6 +10,14 @@ re::Window::Window(
     sf::Style::Close | sf::Style::Titlebar
 ) {
     this->window.setFramerateLimit(re::FPS);
+    sf::VideoMode desktop = sf::VideoMode::getDesktopMode();
+    this->window.setPosition(
+        sf::Vector2i(
+            desktop.width / 2 - re::SCREEN_WIDTH / 2,
+            desktop.height / 2 - re::SCREEN_HEIGHT / 2 - 20
+        )
+    );
+    
     this->changeScene = [this](const re::SceneId& id) {
         if (this->scene->id != id) {
             this->scene.reset();

@@ -17,7 +17,7 @@ namespace re {
 
         public: 
             Notification(const std::string& txt);
-            void update(const float& dt) override;
+            void update(const float dt) override;
             void draw(sf::RenderWindow& window) override;
 
     };

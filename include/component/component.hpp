@@ -1,22 +1,8 @@
 #ifndef C55DD4D4_6472_4709_A5D6_0E489BB5E777
 #define C55DD4D4_6472_4709_A5D6_0E489BB5E777
 #include <SFML/Graphics.hpp>
-#include <algorithm>
-#include <cmath>
-#include <filesystem>
 #include <string>
-#include <memory>
-#include <vector>
-#include <map>
-#include <fstream>
-#include <iostream>
-#include "../util/util.hpp"
 #include "../util/transform.hpp"
-#include "../util/texture_pool.hpp"
-#include "../util/font_pool.hpp"
-#include "../constants.hpp"
-#include "../globals.hpp"
-#include "../style/style.hpp"
 
 
 namespace re {
@@ -29,13 +15,14 @@ namespace re {
             re::Transform transform;
 
         public:
-            Component(const std::string& name);
+            Component(Component&& ) = default;
+            explicit Component(const std::string& name);
             Component(
                 const std::string& name,
                 const re::Transform& transform
             );
             virtual ~Component();
-            virtual void update(const float& dt);
+            virtual void update(const float dt);
             virtual void draw(sf::RenderWindow& window);
 
     };

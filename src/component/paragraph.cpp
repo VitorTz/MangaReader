@@ -4,52 +4,25 @@
 re::Paragraph::Paragraph(
     const std::string& txt,
     const re::Transform& transform,
-    const std::size_t& size,
-    const re::FontId& font,
-    const sf::Color& color,
-    const std::size_t& maxWidth
-) : re::Component("Paragraph", transform),
-    size(size),
-    font(font),
-    color(color),
-    maxWidth(maxWidth) {
-    this->changeTxt(txt);
-}
-
-
-re::Paragraph::Paragraph(
-    const std::string& txt,
-    const re::Transform& transform,
     const re::style::TextStyle& style,
     const std::size_t& maxWidth
-) : re::Paragraph(
-    txt,
-    transform,
-    style.size,
-    style.font,
-    style.color,
-    maxWidth
-) { 
-
+) : re::Component("Paragraph", transform),
+    style(style),
+    maxWidth(maxWidth) { 
+    this->changeTxt(txt);
 }
 
 
 inline void re::Paragraph::addLine(const std::string& s) {
     this->lines.push_back(
-        std::make_unique<re::Text>(
-            s, 
-            re::Transform(), 
-            this->size, 
-            this->font, 
-            this->color
-        )
+        std::make_unique<re::Text>(s, this->style)
     );
 }
 
 void re::Paragraph::changeTxt(const std::string& txt) {
     this->lines.clear();
     const std::size_t txtLenght = txt.size();
-    const sf::Vector2f txtDimension = re::Text::strSize(txt, this->size, this->font);
+    const sf::Vector2f txtDimension = re::Text::strSize(txt, this->style.size, this->style.font);
     const std::size_t lines = this->maxWidth == 0 ? 1 : std::round(txtDimension.x / this->maxWidth + 0.5);
     const std::size_t charPerLine = txtLenght / lines;
     
@@ -79,9 +52,8 @@ void re::Paragraph::changeTxt(const std::string& txt) {
 
 void re::Paragraph::draw(sf::RenderWindow& window) {
     sf::Vector2f p = this->transform.pos;
-    for (auto& line : this->lines) {
-        line->transform.setCenterX(this->transform.centerX());
-        line->transform.setTop(p.y);
+    for (std::unique_ptr<re::Text>& line : this->lines) {
+        line->transform.pos = p;        
         p.y += line->transform.height() + 10;
         line->draw(window);
     }

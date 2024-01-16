@@ -1,7 +1,6 @@
 #ifndef A4E2EADF_CD81_49A8_851D_CAD303B1A3EA
 #define A4E2EADF_CD81_49A8_851D_CAD303B1A3EA
-#include "../globals.hpp"
-
+#include <SFML/System/Clock.hpp>
 
 namespace re {
 
@@ -9,16 +8,15 @@ namespace re {
     class Timer {
 
         private:
+            sf::Clock clock;
             float startedTime;
             float timeInSeconds;
-            bool _isRunning;
+            bool m_is_running;
 
         public:
-            Timer(const float& timeInSeconds);
-            void update();
-            void start();
+            explicit Timer(const float timeInSeconds);            
             void reset();
-            bool isRunning() const;
+            bool isRunning();
     };
     
 } // namespace re

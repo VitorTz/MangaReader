@@ -1,6 +1,5 @@
 #ifndef B076B339_290B_4F44_B01C_1EEB6534AE49
 #define B076B339_290B_4F44_B01C_1EEB6534AE49
-#include "component.hpp"
 #include "sprite.hpp"
 #include "text.hpp"
 #include "../thread-pool/include/BS_thread_pool.hpp"
@@ -19,8 +18,8 @@ namespace re {
             void moveDown(const float& dt);
 
         public:
-            Chapter(const std::string& path);
-            void update(const float& dt) override;
+            explicit Chapter(const std::filesystem::path& path);
+            void update(const float dt) override;
             void draw(sf::RenderWindow& window) override;
 
     };

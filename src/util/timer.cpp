@@ -3,31 +3,24 @@
 
 
 re::Timer::Timer(
-    const float& timeInSeconds
+    const float timeInSeconds
 ) : timeInSeconds(timeInSeconds),
-    _isRunning(false) {
+    m_is_running(false) {
 
     }
 
 
-void re::Timer::start() {
-    this->_isRunning = true;
-    this->startedTime = re::globals::currentTime;
-}
-
-
-void re::Timer::update() {
-    if (this->_isRunning)
-        this->_isRunning = !(re::globals::currentTime - this->startedTime >= this->timeInSeconds);        
-}
-
-
 void re::Timer::reset() {
-    this->startedTime = re::globals::currentTime;
-    this->start();
+    this->m_is_running = true;
+    this->startedTime = this->clock.getElapsedTime().asSeconds();
 }
 
 
-bool re::Timer::isRunning() const {
-    return this->_isRunning;
+bool re::Timer::isRunning() {
+    if (this->m_is_running) {
+        this->m_is_running = !(
+            this->clock.getElapsedTime().asSeconds() - this->startedTime >= this->timeInSeconds
+        );        
+    }
+    return this->m_is_running;
 }

@@ -2,6 +2,8 @@
 #define CA883BED_37A6_4078_840D_F96F1AF46F00
 #include "component.hpp"
 #include "text.hpp"
+#include "../util/util.hpp"
+#include <vector>
 
 
 namespace re {
@@ -10,9 +12,7 @@ namespace re {
     class Paragraph : public re::Component {
 
         private:
-            const std::size_t size;
-            const re::FontId font;
-            const sf::Color color;
+            const re::style::TextStyle style;
             const std::size_t maxWidth;
             std::vector<std::unique_ptr<re::Text>> lines;
         
@@ -23,16 +23,8 @@ namespace re {
             Paragraph(
                 const std::string& txt,
                 const re::Transform& transform,
-                const std::size_t& size,
-                const re::FontId& font,
-                const sf::Color& color,
-                const std::size_t& maxWidth = 0
-            );
-            Paragraph(
-                const std::string& txt,
-                const re::Transform& transform,
                 const re::style::TextStyle& style,
-                const std::size_t& maxWidth
+                const std::size_t& maxWidth = 0
             );
             void changeTxt(const std::string& s);
             void draw(sf::RenderWindow& window) override;

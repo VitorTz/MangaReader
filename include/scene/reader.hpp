@@ -1,6 +1,8 @@
 #ifndef D86E26C6_D3EE_4577_AD49_14C21F0C0274
 #define D86E26C6_D3EE_4577_AD49_14C21F0C0274
 #include "scene.hpp"
+#include "../component/manga_component.hpp"
+#include "../globals.hpp"
 
 
 namespace re {
@@ -9,7 +11,7 @@ namespace re {
 
         public:
             Reader(const re::ChangeScene& changeScene);
-            void update(const float& dt) override;
+            void update(const float dt) override;
             
     };
     

@@ -1,6 +1,7 @@
 #ifndef E2E0A78C_EA1E_4F2C_B885_790ADF5CF6FF
 #define E2E0A78C_EA1E_4F2C_B885_790ADF5CF6FF
 #include "scene.hpp"
+#include "../component/grid.hpp"
 
 
 namespace re {
@@ -10,7 +11,7 @@ namespace re {
 
         public:
             Library(const re::ChangeScene& changeScene);
-            void update(const float& dt) override;
+            void update(const float dt) override;
             
     };
     

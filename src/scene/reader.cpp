@@ -13,7 +13,8 @@ re::Reader::Reader(
     );
 }
 
-void re::Reader::update(const float& dt) {
+
+void re::Reader::update(const float dt) {
     re::Scene::update(dt);
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
         re::globals::currentManga = "";

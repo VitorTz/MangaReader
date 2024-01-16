@@ -1,12 +1,12 @@
 # Compiled class file
 *.class
-
+vcpkg/
 # Log file
 *.log
 .vscode/
 build/
 res/mangas.txt
-mangas/manga/
+mangas/
 
 # BlueJ files
 *.ctxt

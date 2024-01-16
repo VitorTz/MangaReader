@@ -7,16 +7,13 @@ re::Timer re::NotificationManager::timer(4);
 
 
 void re::NotificationManager::showNotification(const std::string& txt) {
-    re::NotificationManager::timer.reset();
-    re::NotificationManager::timer.start();
-    re::NotificationManager::notification.reset();
+    re::NotificationManager::timer.reset();    
     re::NotificationManager::notification = std::make_unique<re::Notification>(txt);
 }
 
 
 void re::NotificationManager::update(const float& dt) {
-    if (re::NotificationManager::timer.isRunning()) {
-        re::NotificationManager::timer.update();
+    if (re::NotificationManager::timer.isRunning()) {        
         re::NotificationManager::notification->update(dt);
     }
 }

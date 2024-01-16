@@ -7,7 +7,6 @@
 #include "chapter.hpp"
 #include "manga_component.hpp"
 #include "rect.hpp"
-#include "border.hpp"
 #include "grid_item.hpp"
 #include "grid.hpp"
 #include "text.hpp"

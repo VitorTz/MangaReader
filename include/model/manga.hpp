@@ -1,9 +1,10 @@
 #ifndef E1FD90DE_EA3F_4B81_B8E0_D06C727957C4
 #define E1FD90DE_EA3F_4B81_B8E0_D06C727957C4
-#include <string>
 #include <filesystem>
-#include "../util/util.hpp"
-#include "../util/manga_info.hpp"
+#include <string>
+#include <vector>
+#include "../constants.hpp"
+#include "../nlohmann/json.hpp"
 
 
 namespace re {
@@ -18,9 +19,14 @@ namespace re {
             std::size_t lastChapterReaded;
             bool isFavorite;
         
+        private:
+            const std::filesystem::path getMangaCoverFile();
+        
         public:
             Manga(const std::filesystem::path& path);
-            void set(const re::MangaInfo& i);
+            void changeFavoriteStatus();
+            void deserialize(const nlohmann::json& json);
+            void serialize(nlohmann::json& json);
 
     };
     

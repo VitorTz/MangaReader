@@ -2,16 +2,15 @@
 
 
 re::Chapter::Chapter(
-    const std::string& path 
-) : re::Component(path),
+    const std::filesystem::path& path 
+) : re::Component(path.stem()),
     text(
-        "Chapter " + path + " has no images", 
-        {}, 
+        "Chapter " + this->name + " has no images",         
         re::style::headerTxtStyle
     ) {
     this->text.transform.setCenter(re::SCREEN_CENTER);
 
-    for (const std::string& s : re::dirFiles(path))
+    for (const std::filesystem::path& s : re::dirFiles(path))
         this->images.push_back(std::make_unique<re::Sprite>(s));
     
     // github project -> https://github.com/bshoshany/thread-pool
@@ -20,7 +19,9 @@ re::Chapter::Chapter(
     pool.detach_loop<unsigned int>(
         0,
         this->images.size(),
-        [this](const unsigned int i) { this->images.at(i)->load(); },
+        [this](const unsigned int i) { 
+            this->images.at(i)->load(re::SCREEN_WIDTH);
+        },
         4
     );
     pool.wait();
@@ -55,7 +56,7 @@ void re::Chapter::moveUp(const float& dt) {
 }
 
 
-void re::Chapter::update(const float& dt) {
+void re::Chapter::update(const float dt) {
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
         this->moveDown(dt);
     else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))

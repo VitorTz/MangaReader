@@ -21,11 +21,11 @@ re::Component::Component(
 re::Component::~Component() = default;
 
 
-void re::Component::update(const float& dt) {
+void re::Component::update([[maybe_unused]] const float dt) {
  
 }
 
 
-void re::Component::draw(sf::RenderWindow& window) {
+void re::Component::draw([[maybe_unused]] sf::RenderWindow& window) {
  
 }

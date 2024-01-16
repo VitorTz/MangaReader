@@ -1,10 +1,10 @@
 #ifndef EC82ECAB_D022_4804_9E7B_52C1B09DAC5D
 #define EC82ECAB_D022_4804_9E7B_52C1B09DAC5D
-#include <map>
-#include <memory>
-#include <string>
-#include <set>
 #include <SFML/Window/Keyboard.hpp>
+#include <string>
+#include <memory>
+#include <map>
+#include <set>
 #include "model/manga.hpp"
 
 

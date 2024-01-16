@@ -6,7 +6,7 @@ OBJ_DIR  := $(BUILD)/objects
 APP_DIR  := $(BUILD)/apps
 SRC_DIRS ?= ./src
 TARGET   := manga_reader.out
-INCLUDE  :=
+INCLUDE  := 
 SRC      := $(shell find $(SRC_DIRS) -name *.cpp -or -name *.c -or -name *.s)
 
 OBJECTS  := $(SRC:%.cpp=$(OBJ_DIR)/%.o)

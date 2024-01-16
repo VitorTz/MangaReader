@@ -1,50 +1,54 @@
-#include "../include/manga_reader.hpp"
+#include "../include/window/window.hpp"
+#include "../include/nlohmann/json.hpp"
+#include <fstream>
+
+
+nlohmann::json getJson(const std::filesystem::path& filePath) {
+    std::ifstream jsonFile(filePath);
+    nlohmann::json jsonData = nlohmann::json::parse(jsonFile);
+    return jsonData;
+}
 
 
 void init() {
 
-    re::createDir(re::MANGA_PARENT_DIR);
-    re::createDir(re::MANGA_DIR);
-    re::createDir(re::MANGA_COVER_DIR);
-    re::createDir(re::MANGA_SETTINGS_DIR);
-    
-    for (const std::filesystem::path& p : re::dirPaths(re::MANGA_DIR)) {
-        re::globals::mangaByName.insert({p.stem(), std::make_shared<re::Manga>(p)});
+    nlohmann::json settings = getJson(re::SETTINGS_FILE);
+    std::filesystem::path mangaFolder(settings["main_folder"]);
+
+    for (const auto& mangaPath : std::filesystem::directory_iterator(mangaFolder)) {
+        const std::filesystem::path& path = mangaPath.path();
+        re::globals::mangaByName.insert(
+            {
+                path.stem().string(),
+                std::make_shared<re::Manga>(path)
+            }
+        );
     }
 
-    // load favorite and last chapter readed
-    std::ifstream f;
-    f.open(re::MANGAS_SETTINGS_FILE, std::ifstream::in);
-    if (f.is_open()) {
-        std::string line;
-        while (std::getline(f, line)) {
-            re::MangaInfo mInfo = re::extractMangaInfo(line);
-            if (!mInfo.success || !re::contains(re::globals::mangaByName, mInfo.name)) {
-                std::cout << "Manga " << mInfo.name << " not founded\n";
-                continue;
-            }
-            std::shared_ptr<re::Manga>& manga = re::globals::mangaByName.at(mInfo.name);
-            manga->set(mInfo);
+    nlohmann::json mangas = getJson(re::MANGAS_FILE);
+    for (const auto& mangaInfo : mangas) {
+        const std::string& name = mangaInfo["name"];
+        try {
+            std::shared_ptr<re::Manga>& m = re::globals::mangaByName.at(name);
+            m->deserialize(mangaInfo);            
+        } catch (std::out_of_range& e) {
+            std::cout << "Manga " << name << " not fond\n";
         }
-        f.close();
     }
+
 }
 
 
 void close() {
-    std::ofstream f;
-    f.open(re::MANGAS_SETTINGS_FILE);
-    if (f.is_open()) {
-        for (auto& [name, manga] : re::globals::mangaByName) {
-            f << name 
-            << '-' 
-            << std::to_string(manga->lastChapterReaded) 
-            << '-' 
-            << std::to_string(manga->isFavorite) 
-            << '\n';
-        }
-        f.close();
+    nlohmann::json jsonData;
+    
+    for (auto& [name, manga] : re::globals::mangaByName) {
+        manga->serialize(jsonData);
     }
+    
+    std::ofstream jsonFile(re::MANGAS_FILE);
+    jsonFile << std::setw(4) << jsonData;
+
     re::TexturePool::rmvAll();
     re::FontPool::rmvAll();
 }

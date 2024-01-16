@@ -3,8 +3,8 @@
 
 re::Bookmark::Bookmark(
 
-) : b0(re::BOOKMARK_0),
-    b1(re::BOOKMARK_1) {
+) : b0(re::BOOKMARK_0_FILE),
+    b1(re::BOOKMARK_1_FILE) {
         this->b0.load();
         this->b1.load();
     }
@@ -31,8 +31,8 @@ re::GridItem::GridItem(
 ) : re::Component(manga->name, {{}, {re::GRID_ITEM_SIZE}}),
     manga(manga),
     image(manga->mangaCoverFile),
-    text(manga->name, {}, re::style::gridItemTxtStyle, re::GRID_ITEM_SIZE.x - 20),
-    rect({{}, {re::GRID_ITEM_SIZE.x, text.transform.height() + 20}}, re::Colors::BLACK_TRANSPARENT) {
+    text(manga->name, {}, re::style::gridItemTxtStyle, re::GRID_ITEM_SIZE.x - 10),
+    rect({{}, {re::GRID_ITEM_SIZE.x, text.transform.height() + 10}}, re::Colors::BLACK_TRANSPARENT) {
     this->image.load();
 }
 
@@ -40,8 +40,8 @@ re::GridItem::GridItem(
 void re::GridItem::setPos(const sf::Vector2f& pos) {
     this->transform.pos = pos;
     this->image.transform.pos = pos;
-    this->text.transform.setCenterX(this->transform.centerX());
-    this->text.transform.setBottom(this->transform.bottom() - 10);
+    this->text.transform.setLeft(this->transform.left() + 5);
+    this->text.transform.setBottom(this->transform.bottom() - 5);
     this->rect.transform.setLeft(pos.x);
     this->rect.transform.setBottom(this->image.transform.bottom());
 }
@@ -55,6 +55,7 @@ void re::GridItem::draw(sf::RenderWindow& window) {
 }
 
 
-re::ItemInfo re::GridItem::getItemInfo() const {
-    return {this->manga->name, this->manga->isFavorite};
+const std::shared_ptr<re::Manga>& re::GridItem::getManga() {
+    return this->manga;
 }
+

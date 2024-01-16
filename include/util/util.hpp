@@ -8,20 +8,15 @@
 #include <numeric>
 #include <iostream>
 #include <map>
-#include "manga_info.hpp"
 #include "../constants.hpp"
 
 
 namespace re {
     
-    std::vector<std::string> dirFiles(const std::string& dir);
-    std::vector<std::string> dirFiles(const std::filesystem::path& path);
-    std::vector<std::filesystem::path> dirPaths(const std::string& dir);
-    float extractNum(const std::string& s, const float& defaultValue);
+    std::vector<std::filesystem::path> dirFiles(const std::filesystem::path& path);
+    float extractNumFromStr(const std::string& s, const float& defaultValue);
     std::vector<std::string> split(const std::string& s, const char& sep);
     
-    std::string getMangaCoverImg(const std::string& mangaName);
-    re::MangaInfo extractMangaInfo(const std::string& s);
 
     template<typename T>
     void printVector(const sf::Vector2<T>& v) {
@@ -37,15 +32,6 @@ namespace re {
         return m.find(k) != m.end();
     }
 
-    template<typename T>
-    bool contains(const std::vector<T>& v, const T& i) {
-        for (const T& t : v)
-            if (t == i) return true;
-        return false;
-    }
-
-    void checkIfFolderExists(const std::string& n);
-    void createDir(const std::string& n);
 
 } // namespace re
 

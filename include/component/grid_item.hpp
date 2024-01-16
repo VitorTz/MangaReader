@@ -26,12 +26,6 @@ namespace re {
 
     };
 
-    typedef struct ItemInfo {
-        const std::string& name;
-        const bool isFavorite;
-    } ItemInfo;
-
-
     class GridItem : public re::Component {
 
         private:
@@ -47,7 +41,7 @@ namespace re {
             GridItem(const std::shared_ptr<re::Manga> manga);
             void setPos(const sf::Vector2f& pos);
             void draw(sf::RenderWindow& window) override;
-            re::ItemInfo getItemInfo() const;
+            const std::shared_ptr<re::Manga>& getManga(); 
 
     };
 

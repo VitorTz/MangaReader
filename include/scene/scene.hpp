@@ -1,6 +1,8 @@
 #ifndef DD23C6ED_905A_430B_A3A0_F71BB6727A9B
 #define DD23C6ED_905A_430B_A3A0_F71BB6727A9B
-#include "../component/components.hpp"
+#include <SFML/Graphics/RenderWindow.hpp>
+#include <functional>
+#include <map>
 #include "../util/notification_manager.hpp"
 
 
@@ -11,7 +13,7 @@ namespace re {
         ReaderId
     };
 
-    typedef std::function<void(const re::SceneId&)> ChangeScene;
+    typedef std::function<void(const re::SceneId)> ChangeScene;
 
     const re::SceneId mainScene = re::SceneId::ReaderId;
 
@@ -26,11 +28,11 @@ namespace re {
 
         public:
             Scene(
-                const re::SceneId& id,
+                const re::SceneId id,
                 const re::ChangeScene& changeScene
             );
             virtual ~Scene();
-            virtual void update(const float& dt);
+            virtual void update(const float dt);
             virtual void draw(sf::RenderWindow& window);
 
     };
