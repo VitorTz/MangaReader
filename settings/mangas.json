@@ -1,42 +1,447 @@
 {
-    "A Wonderful New World": {
+    "A Delicate Relationship": {
         "isFavorite": false,
-        "lastChapterReaded": 84,
+        "lastChapterReaded": 0,
+        "name": "A Delicate Relationship"
+    },
+    "A Different Class": {
+        "isFavorite": false,
+        "lastChapterReaded": 0,
+        "name": "A Different Class"
+    },
+    "A Knowing Sister": {
+        "isFavorite": false,
+        "lastChapterReaded": 0,
+        "name": "A Knowing Sister"
+    },
+    "A Losers Escape": {
+        "isFavorite": false,
+        "lastChapterReaded": 0,
+        "name": "A Losers Escape"
+    },
+    "A Perverts Daily Life": {
+        "isFavorite": false,
+        "lastChapterReaded": 0,
+        "name": "A Perverts Daily Life"
+    },
+    "A Wonderful New World": {
+        "isFavorite": true,
+        "lastChapterReaded": 107,
         "name": "A Wonderful New World"
     },
-    "Akira": {
+    "As If Daughter": {
         "isFavorite": false,
         "lastChapterReaded": 0,
-        "name": "Akira"
+        "name": "As If Daughter"
     },
-    "Chainsaw Manga": {
+    "Banging My Aunt": {
         "isFavorite": false,
         "lastChapterReaded": 0,
-        "name": "Chainsaw Manga"
+        "name": "Banging My Aunt"
     },
-    "Domestic Girlfriend": {
+    "Bought By The Demon Lord Before The Ending": {
         "isFavorite": false,
         "lastChapterReaded": 0,
-        "name": "Domestic Girlfriend"
+        "name": "Bought By The Demon Lord Before The Ending"
+    },
+    "Close Family": {
+        "isFavorite": false,
+        "lastChapterReaded": 0,
+        "name": "Close Family"
+    },
+    "Crossing The Line": {
+        "isFavorite": false,
+        "lastChapterReaded": 0,
+        "name": "Crossing The Line"
+    },
+    "Dance Departments Female Sunbaes": {
+        "isFavorite": false,
+        "lastChapterReaded": 0,
+        "name": "Dance Departments Female Sunbaes"
     },
     "Domestic Kanojo": {
         "isFavorite": true,
         "lastChapterReaded": 0,
         "name": "Domestic Kanojo"
     },
+    "Dorm Room Sisters": {
+        "isFavorite": false,
+        "lastChapterReaded": 0,
+        "name": "Dorm Room Sisters"
+    },
     "Dorohedoro": {
         "isFavorite": false,
         "lastChapterReaded": 0,
         "name": "Dorohedoro"
     },
-    "Homunculus": {
+    "Drunk On You": {
         "isFavorite": false,
+        "lastChapterReaded": 0,
+        "name": "Drunk On You"
+    },
+    "Family Adjustments": {
+        "isFavorite": false,
+        "lastChapterReaded": 0,
+        "name": "Family Adjustments"
+    },
+    "Fantasyland": {
+        "isFavorite": false,
+        "lastChapterReaded": 0,
+        "name": "Fantasyland"
+    },
+    "Friends Girlfriend": {
+        "isFavorite": false,
+        "lastChapterReaded": 0,
+        "name": "Friends Girlfriend"
+    },
+    "Happy Campus": {
+        "isFavorite": false,
+        "lastChapterReaded": 0,
+        "name": "Happy Campus"
+    },
+    "Heart Stealer": {
+        "isFavorite": false,
+        "lastChapterReaded": 0,
+        "name": "Heart Stealer"
+    },
+    "Her 4 Incher": {
+        "isFavorite": false,
+        "lastChapterReaded": 0,
+        "name": "Her 4 Incher"
+    },
+    "Heroine App": {
+        "isFavorite": false,
+        "lastChapterReaded": 0,
+        "name": "Heroine App"
+    },
+    "Homunculus": {
+        "isFavorite": true,
         "lastChapterReaded": 0,
         "name": "Homunculus"
     },
-    "Jujutsu Kaisen": {
+    "Housekeeper": {
         "isFavorite": false,
         "lastChapterReaded": 0,
-        "name": "Jujutsu Kaisen"
+        "name": "Housekeeper"
+    },
+    "Hypnomancer": {
+        "isFavorite": false,
+        "lastChapterReaded": 0,
+        "name": "Hypnomancer"
+    },
+    "I Have To Sleep With A Stranger": {
+        "isFavorite": false,
+        "lastChapterReaded": 0,
+        "name": "I Have To Sleep With A Stranger"
+    },
+    "I Picked Up A Self Proclaimed Heavenly Demon": {
+        "isFavorite": false,
+        "lastChapterReaded": 0,
+        "name": "I Picked Up A Self Proclaimed Heavenly Demon"
+    },
+    "I Was The One Who Got Hypnotized But I Made An Idol Harem": {
+        "isFavorite": false,
+        "lastChapterReaded": 0,
+        "name": "I Was The One Who Got Hypnotized But I Made An Idol Harem"
+    },
+    "I Wont Sleep With You For Free": {
+        "isFavorite": false,
+        "lastChapterReaded": 0,
+        "name": "I Wont Sleep With You For Free"
+    },
+    "Im The Leader Of A Cult": {
+        "isFavorite": false,
+        "lastChapterReaded": 0,
+        "name": "Im The Leader Of A Cult"
+    },
+    "In Her Place": {
+        "isFavorite": false,
+        "lastChapterReaded": 0,
+        "name": "In Her Place"
+    },
+    "Intern Haenyeo": {
+        "isFavorite": false,
+        "lastChapterReaded": 0,
+        "name": "Intern Haenyeo"
+    },
+    "Is There No Goddess In My College": {
+        "isFavorite": false,
+        "lastChapterReaded": 0,
+        "name": "Is There No Goddess In My College"
+    },
+    "Keep This A Secret From Mom": {
+        "isFavorite": false,
+        "lastChapterReaded": 0,
+        "name": "Keep This A Secret From Mom"
+    },
+    "King Of The Night": {
+        "isFavorite": false,
+        "lastChapterReaded": 0,
+        "name": "King Of The Night"
+    },
+    "Life With Mia": {
+        "isFavorite": false,
+        "lastChapterReaded": 0,
+        "name": "Life With Mia"
+    },
+    "Liliths Cord": {
+        "isFavorite": false,
+        "lastChapterReaded": 0,
+        "name": "Liliths Cord"
+    },
+    "Living With Two Busty Women": {
+        "isFavorite": false,
+        "lastChapterReaded": 0,
+        "name": "Living With Two Busty Women"
+    },
+    "Love Limit Exceeded": {
+        "isFavorite": false,
+        "lastChapterReaded": 0,
+        "name": "Love Limit Exceeded"
+    },
+    "Manager Please Scold Me": {
+        "isFavorite": false,
+        "lastChapterReaded": 0,
+        "name": "Manager Please Scold Me"
+    },
+    "Meeting You Again": {
+        "isFavorite": false,
+        "lastChapterReaded": 0,
+        "name": "Meeting You Again"
+    },
+    "Milk Therapy": {
+        "isFavorite": false,
+        "lastChapterReaded": 0,
+        "name": "Milk Therapy"
+    },
+    "Mother In Law Bends To My Will": {
+        "isFavorite": false,
+        "lastChapterReaded": 0,
+        "name": "Mother In Law Bends To My Will"
+    },
+    "My Aunt In Puberty": {
+        "isFavorite": false,
+        "lastChapterReaded": 0,
+        "name": "My Aunt In Puberty"
+    },
+    "My Female Friend Who Crossed The Line": {
+        "isFavorite": false,
+        "lastChapterReaded": 0,
+        "name": "My Female Friend Who Crossed The Line"
+    },
+    "My Illustrator": {
+        "isFavorite": false,
+        "lastChapterReaded": 0,
+        "name": "My Illustrator"
+    },
+    "My Landlady Noona": {
+        "isFavorite": false,
+        "lastChapterReaded": 0,
+        "name": "My Landlady Noona"
+    },
+    "My Madam Was My Teacher": {
+        "isFavorite": false,
+        "lastChapterReaded": 0,
+        "name": "My Madam Was My Teacher"
+    },
+    "Naughty Little Sister": {
+        "isFavorite": false,
+        "lastChapterReaded": 0,
+        "name": "Naughty Little Sister"
+    },
+    "New Flavors": {
+        "isFavorite": false,
+        "lastChapterReaded": 0,
+        "name": "New Flavors"
+    },
+    "Noonas Taste": {
+        "isFavorite": false,
+        "lastChapterReaded": 0,
+        "name": "Noonas Taste"
+    },
+    "Not One But Two": {
+        "isFavorite": false,
+        "lastChapterReaded": 0,
+        "name": "Not One But Two"
+    },
+    "Panty Note": {
+        "isFavorite": false,
+        "lastChapterReaded": 0,
+        "name": "Panty Note"
+    },
+    "Please Kill My Husband": {
+        "isFavorite": false,
+        "lastChapterReaded": 0,
+        "name": "Please Kill My Husband"
+    },
+    "Private Tutoring In These Trying Times": {
+        "isFavorite": false,
+        "lastChapterReaded": 0,
+        "name": "Private Tutoring In These Trying Times"
+    },
+    "Project Utopia": {
+        "isFavorite": false,
+        "lastChapterReaded": 0,
+        "name": "Project Utopia"
+    },
+    "Secret Class": {
+        "isFavorite": true,
+        "lastChapterReaded": 4,
+        "name": "Secret Class"
+    },
+    "Seoul Kids These Days": {
+        "isFavorite": false,
+        "lastChapterReaded": 0,
+        "name": "Seoul Kids These Days"
+    },
+    "Sextertainment": {
+        "isFavorite": false,
+        "lastChapterReaded": 0,
+        "name": "Sextertainment"
+    },
+    "Sextudy Group": {
+        "isFavorite": false,
+        "lastChapterReaded": 0,
+        "name": "Sextudy Group"
+    },
+    "Shall We Go To The Ryokan Together": {
+        "isFavorite": false,
+        "lastChapterReaded": 0,
+        "name": "Shall We Go To The Ryokan Together"
+    },
+    "Shall We Ride": {
+        "isFavorite": false,
+        "lastChapterReaded": 0,
+        "name": "Shall We Ride"
+    },
+    "Shes Driving Me Crazy": {
+        "isFavorite": false,
+        "lastChapterReaded": 0,
+        "name": "Shes Driving Me Crazy"
+    },
+    "Son Of Nam": {
+        "isFavorite": false,
+        "lastChapterReaded": 0,
+        "name": "Son Of Nam"
+    },
+    "Soothe Me": {
+        "isFavorite": false,
+        "lastChapterReaded": 0,
+        "name": "Soothe Me"
+    },
+    "Sponsor Me Please": {
+        "isFavorite": false,
+        "lastChapterReaded": 0,
+        "name": "Sponsor Me Please"
+    },
+    "Streamer Aunt": {
+        "isFavorite": false,
+        "lastChapterReaded": 0,
+        "name": "Streamer Aunt"
+    },
+    "Summer Retreat Girls": {
+        "isFavorite": false,
+        "lastChapterReaded": 0,
+        "name": "Summer Retreat Girls"
+    },
+    "Switch On": {
+        "isFavorite": false,
+        "lastChapterReaded": 0,
+        "name": "Switch On"
+    },
+    "Taming An Evil Young Lady": {
+        "isFavorite": false,
+        "lastChapterReaded": 0,
+        "name": "Taming An Evil Young Lady"
+    },
+    "Team Leader Report": {
+        "isFavorite": false,
+        "lastChapterReaded": 0,
+        "name": "Team Leader Report"
+    },
+    "The Neighborhood Celebrity": {
+        "isFavorite": false,
+        "lastChapterReaded": 0,
+        "name": "The Neighborhood Celebrity"
+    },
+    "The Runaway Family": {
+        "isFavorite": false,
+        "lastChapterReaded": 0,
+        "name": "The Runaway Family"
+    },
+    "The Secret Affairs Of The 3Rd Generation Chaebol": {
+        "isFavorite": false,
+        "lastChapterReaded": 0,
+        "name": "The Secret Affairs Of The 3Rd Generation Chaebol"
+    },
+    "The Turning Point": {
+        "isFavorite": false,
+        "lastChapterReaded": 0,
+        "name": "The Turning Point"
+    },
+    "The Unwanted Roommate": {
+        "isFavorite": false,
+        "lastChapterReaded": 0,
+        "name": "The Unwanted Roommate"
+    },
+    "This Worlds Breastfeeding Cafe": {
+        "isFavorite": false,
+        "lastChapterReaded": 0,
+        "name": "This Worlds Breastfeeding Cafe"
+    },
+    "Tonight Youre My Dinner": {
+        "isFavorite": false,
+        "lastChapterReaded": 0,
+        "name": "Tonight Youre My Dinner"
+    },
+    "Touch To Unlock": {
+        "isFavorite": false,
+        "lastChapterReaded": 0,
+        "name": "Touch To Unlock"
+    },
+    "Troublesome Sister": {
+        "isFavorite": false,
+        "lastChapterReaded": 0,
+        "name": "Troublesome Sister"
+    },
+    "Wait Im A Married Woman": {
+        "isFavorite": false,
+        "lastChapterReaded": 0,
+        "name": "Wait Im A Married Woman"
+    },
+    "Water Overflow": {
+        "isFavorite": false,
+        "lastChapterReaded": 0,
+        "name": "Water Overflow"
+    },
+    "Welcome To Kids Cafe": {
+        "isFavorite": false,
+        "lastChapterReaded": 0,
+        "name": "Welcome To Kids Cafe"
+    },
+    "What Do I Do Now": {
+        "isFavorite": false,
+        "lastChapterReaded": 0,
+        "name": "What Do I Do Now"
+    },
+    "When Did We Start Dating": {
+        "isFavorite": false,
+        "lastChapterReaded": 0,
+        "name": "When Did We Start Dating"
+    },
+    "Where Is My Hammer": {
+        "isFavorite": false,
+        "lastChapterReaded": 0,
+        "name": "Where Is My Hammer"
+    },
+    "Wild Eyes": {
+        "isFavorite": false,
+        "lastChapterReaded": 0,
+        "name": "Wild Eyes"
+    },
+    "Womens University Student Who Served In The Military": {
+        "isFavorite": false,
+        "lastChapterReaded": 0,
+        "name": "Womens University Student Who Served In The Military"
     }
 }
