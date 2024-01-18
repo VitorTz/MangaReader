@@ -1,5 +1,5 @@
 #include "../../include/component/sprite.hpp"
-#include <iostream>
+
 
 re::Sprite::Sprite(
     const std::filesystem::path& path

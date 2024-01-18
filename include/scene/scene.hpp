@@ -15,7 +15,7 @@ namespace re {
 
     typedef std::function<void(const re::SceneId)> ChangeScene;
 
-    const re::SceneId mainScene = re::SceneId::ReaderId;
+    const re::SceneId mainScene = re::SceneId::LibraryId;
 
     class Scene {
 

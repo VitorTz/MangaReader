@@ -19,8 +19,7 @@ re::Window::Window(
     );
     
     this->changeScene = [this](const re::SceneId& id) {
-        if (this->scene->id != id) {
-            this->scene.reset();
+        if (this->scene == nullptr || this->scene->id != id) {
             switch (id) {
                 case re::SceneId::ReaderId:
                     this->scene = std::make_unique<re::Reader>(this->changeScene);                    
@@ -34,7 +33,7 @@ re::Window::Window(
         }
     };
 
-    this->scene = std::make_unique<re::Library>(this->changeScene);
+    this->changeScene(re::mainScene);
 
 }
 
