@@ -36,6 +36,7 @@ namespace re {
             re::Sprite image;
             re::Paragraph text;
             re::Rect rect;
+            re::Text numChapters;
         
         public:
             GridItem(const std::shared_ptr<re::Manga> manga);

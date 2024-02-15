@@ -13,7 +13,7 @@ namespace re::globals {
     extern std::map<std::string, std::shared_ptr<re::Manga>> mangaByName;
     extern std::string currentManga;
     extern std::set<sf::Keyboard::Key> pressedKeys;
-    extern float currentTime;
+        
     
 } // namespace re
 

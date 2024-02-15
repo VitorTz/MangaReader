@@ -32,7 +32,8 @@ re::GridItem::GridItem(
     manga(manga),
     image(manga->mangaCoverFile),
     text(manga->name, {}, re::style::gridItemTxtStyle, re::GRID_ITEM_SIZE.x - 10),
-    rect({{}, {re::GRID_ITEM_SIZE.x, text.transform.height() + 10}}, re::Colors::BLACK_TRANSPARENT) {
+    rect({{}, {re::GRID_ITEM_SIZE.x, text.transform.height() + 10}}, re::Colors::BLACK_TRANSPARENT),
+    numChapters(std::to_string(manga->lastChapterReaded) + '/' + std::to_string(manga->numChapters), re::style::gridItemTxtStyle) {
     this->image.load();
 }
 
@@ -40,6 +41,8 @@ re::GridItem::GridItem(
 void re::GridItem::setPos(const sf::Vector2f& pos) {
     this->transform.pos = pos;
     this->image.transform.pos = pos;
+    this->numChapters.transform.setLeft(this->transform.left() + 10);
+    this->numChapters.transform.setTop(this->transform.top() + 10);
     this->text.transform.setLeft(this->transform.left() + 5);
     this->text.transform.setBottom(this->transform.bottom() - 5);
     this->rect.transform.setLeft(pos.x);
@@ -51,6 +54,7 @@ void re::GridItem::draw(sf::RenderWindow& window) {
     this->image.draw(window);
     this->rect.draw(window);
     this->text.draw(window);
+    this->numChapters.draw(window);
     re::GridItem::bookmark.draw(window, this->transform, this->manga->isFavorite);
 }
 

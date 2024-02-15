@@ -1,35 +1,24 @@
 #include "../../include/model/manga.hpp"
-#include <iostream>
+
 
 re::Manga::Manga(
     const std::filesystem::path& path
 ) : path(path),
     name(path.stem()),
     mangaCoverFile(this->getMangaCoverFile()),
+    numChapters(re::countDir(path)), 
     lastChapterReaded(0),
     isFavorite(false) {
-    
+        
+        
     }
 
 
 
 const std::filesystem::path re::Manga::getMangaCoverFile() {
-    std::filesystem::path fileName1(
-        this->path.string() + '/' + "cover.jpg"
-    );
-    std::filesystem::path fileName2(
-        this->path.string() + '/' + "cover.png"
-    );
-    
-    if (std::filesystem::exists(fileName1)) {
-        return fileName1;
-    } 
-    if (std::filesystem::exists(fileName2)) {
-        return fileName2;
-    }
-    return re::DEFAULT_COVER;
+    std::filesystem::path fileName(this->path.string() + '/' + "cover.jpg");
+    return std::filesystem::exists(fileName) ? fileName : re::DEFAULT_COVER;    
 }
-
 
 
 

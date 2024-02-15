@@ -4,10 +4,7 @@
 re::Chapter::Chapter(
     const std::filesystem::path& path 
 ) : re::Component(path.stem()),
-    text(
-        "Chapter " + this->name + " has no images",         
-        re::style::headerTxtStyle
-    ) {
+    text("Chapter " + this->name + " has no images", re::style::headerTxtStyle) {
     this->text.transform.setCenter(re::SCREEN_CENTER);
 
     for (const std::filesystem::path& s : re::dirFiles(path))

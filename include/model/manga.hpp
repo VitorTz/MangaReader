@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 #include "../constants.hpp"
+#include "../util/util.hpp"
 #include "../nlohmann/json.hpp"
 
 
@@ -16,6 +17,7 @@ namespace re {
             const std::filesystem::path path;
             const std::string name;
             const std::string mangaCoverFile;
+            const std::size_t numChapters;
             std::size_t lastChapterReaded;
             bool isFavorite;
         

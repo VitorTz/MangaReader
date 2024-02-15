@@ -17,6 +17,7 @@ namespace re {
     float extractNumFromStr(const std::string& s, const float& defaultValue);
     std::vector<std::string> split(const std::string& s, const char& sep);
     
+    std::size_t countDir(const std::filesystem::path& path);
 
     template<typename T>
     void printVector(const sf::Vector2<T>& v) {

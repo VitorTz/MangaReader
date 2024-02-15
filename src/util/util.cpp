@@ -48,3 +48,9 @@ std::vector<std::string> re::split(const std::string& s, const char& sep) {
 }
 
 
+std::size_t re::countDir(const std::filesystem::path& path) {
+    int c = 0;
+    for ([[maybe_unused]] const auto& p : std::filesystem::directory_iterator(path))
+        c++;
+    return c;
+}

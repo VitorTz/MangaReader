@@ -13,8 +13,8 @@ namespace re
 {
 
     // window
-    const int SCREEN_WIDTH = 640;
-    const int SCREEN_HEIGHT = 650;
+    const int SCREEN_WIDTH = 1080;
+    const int SCREEN_HEIGHT = 680;
     const sf::Vector2f SCREEN_SIZE(SCREEN_WIDTH, SCREEN_HEIGHT);
     const sf::Vector2f SCREEN_CENTER(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
     const sf::Color SCREEN_BG_COLOR = re::Colors::GREY_200;
@@ -27,7 +27,7 @@ namespace re
     const std::filesystem::path BOOKMARK_1_FILE = "res/images/bookmark_1.png";
 
     // reader
-    const int IMAGE_MOVE_SPEED = 450;
+    const int IMAGE_MOVE_SPEED = 650;
 
     // dir    
     const std::filesystem::path DEFAULT_COVER = "res/images/cover.png";
@@ -35,12 +35,11 @@ namespace re
     const std::filesystem::path SETTINGS_FILE("settings/settings.json");
 
     // grid
-    const sf::Vector2f GRID_ITEM_SIZE(200, 280);
+    const sf::Vector2f GRID_ITEM_SIZE(260, 364);
     const int GRID_GAP = 5;
 
     // font
-    enum FontId
-    {
+    enum FontId {
         Thin,
         Regular,
         Medium,

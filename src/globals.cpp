@@ -9,5 +9,3 @@ std::string re::globals::currentManga;
 
 std::set<sf::Keyboard::Key> re::globals::pressedKeys;
 
-
-float re::globals::currentTime = 0;
