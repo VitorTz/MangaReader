@@ -17,6 +17,8 @@ namespace mr::constants  {
     const char DEFAULT_MANGA_COVER_IMAGE[] = "res/images/cover.png";
     const char MANGA_DIR[] = "/mnt/HD/Manga";
     const char FONT_PATH[] = "res/font/Poppins-Regular.ttf";
+    const char SETTINGS_DIR[] = "settings";
+    const char MANGAS_TXT_FILE[] = "settings/mangas.txt";
 
     // reader scene
     const double SCROLL_SPEED = 550.0;

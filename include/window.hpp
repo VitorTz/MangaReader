@@ -24,6 +24,7 @@ namespace mr {
         
         public:
             Window();
+            ~Window();
             void run();
 
     };

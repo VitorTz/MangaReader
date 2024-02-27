@@ -1,7 +1,8 @@
 #pragma once
-#include "util/image.hpp"
-#include "constants.hpp"
-#include "globals.hpp"
+#include "../constants.hpp"
+#include "../globals.hpp"
+#include "../util/image.hpp"
+#include "../manga.hpp"
 
 
 namespace mr {
@@ -9,6 +10,7 @@ namespace mr {
     class GridItem {
 
         private:            
+            mr::Manga* manga;
             std::string manga_name;
             sf::Text txt;
             sf::Font font;

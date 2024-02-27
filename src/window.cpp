@@ -38,6 +38,11 @@ mr::Window::Window(
 }
 
 
+mr::Window::~Window() {
+    mr::dump_mangas(&mr::globals::mangas);
+}
+
+
 void mr::Window::handle_input() {
     sf::Event e;
     while (window.pollEvent(e)) {

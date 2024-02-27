@@ -30,3 +30,19 @@ std::vector<std::filesystem::path> mr::get_images_files_from_dir(const std::file
     );
     return v;
 }
+
+
+std::vector<std::string> mr::split(const std::string& s, const char sep) {
+    std::vector<std::string> v;
+    std::string word;    
+    for (const char c : s) {
+        if (!word.empty() && c == sep) {
+            v.push_back(word);
+            word = "";
+        } else {
+            word += c;
+        }
+    }
+    if (!word.empty()) v.push_back(word);
+    return v;
+}
