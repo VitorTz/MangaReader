@@ -2,25 +2,22 @@
 
 
 
-re::Timer::Timer(
-    const float timeInSeconds
-) : timeInSeconds(timeInSeconds),
-    m_is_running(false) {
+mr::Timer::Timer(
+    const int frames
+) : max_count(frames) {
 
-    }
-
-
-void re::Timer::reset() {
-    this->m_is_running = true;
-    this->startedTime = this->clock.getElapsedTime().asSeconds();
 }
 
 
-bool re::Timer::isRunning() {
-    if (this->m_is_running) {
-        this->m_is_running = !(
-            this->clock.getElapsedTime().asSeconds() - this->startedTime >= this->timeInSeconds
-        );        
+void mr::Timer::update() {
+    ++count;
+}
+
+
+bool mr::Timer::check() {
+    const bool s = count >= max_count;
+    if (s) {
+        count = 0;
     }
-    return this->m_is_running;
+    return s;
 }

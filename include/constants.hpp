@@ -1,57 +1,31 @@
-#ifndef MANGA_READER_CONSTANTS_HPP
-#define MANGA_READER_CONSTANTS_HPP
-#include <SFML/System/Vector2.hpp>
-#include <SFML/Window/Keyboard.hpp>
-#include <filesystem>
-#include <string>
-#include <map>
-#include "util/transform.hpp"
-#include "colors.hpp"
+#pragma once
+#include "SFML/Graphics/Color.hpp"
+#include "SFML/System/Vector2.hpp"
 
 
-namespace re
-{
+namespace mr::constants  {
 
     // window
-    const int SCREEN_WIDTH = 1080;
-    const int SCREEN_HEIGHT = 680;
-    const sf::Vector2f SCREEN_SIZE(SCREEN_WIDTH, SCREEN_HEIGHT);
-    const sf::Vector2f SCREEN_CENTER(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
-    const sf::Color SCREEN_BG_COLOR = re::Colors::GREY_200;
-    const re::Transform SCREEN_RECT({}, re::SCREEN_SIZE);
-    const std::string SCREEN_TITLE = "Manga Reader";
+    const int SCREEN_WIDTH = 1280;
+    const int SCREEN_HEIGHT = 720;
+    const sf::Vector2f SCREEN_SIZE(1280, 720);
+    const char WINDOW_TITLE[] = "Manga Reader";
     const int FPS = 60;
+    const sf::Color SCREEN_BG_COLOR(18, 18, 18);
 
-    // res
-    const std::filesystem::path BOOKMARK_0_FILE = "res/images/bookmark_0.png";
-    const std::filesystem::path BOOKMARK_1_FILE = "res/images/bookmark_1.png";
+    // res 
+    const char DEFAULT_MANGA_COVER_IMAGE[] = "res/images/cover.png";
+    const char MANGA_DIR[] = "/mnt/HD/Manga";
+    const char FONT_PATH[] = "res/font/Poppins-Regular.ttf";
 
-    // reader
-    const int IMAGE_MOVE_SPEED = 650;
+    // reader scene
+    const double SCROLL_SPEED = 550.0;
 
-    // dir    
-    const std::filesystem::path DEFAULT_COVER = "res/images/cover.png";
-    const std::filesystem::path MANGAS_FILE("settings/mangas.json");
-    const std::filesystem::path SETTINGS_FILE("settings/settings.json");
-
-    // grid
+    // library scene
     const sf::Vector2f GRID_ITEM_SIZE(260, 364);
-    const int GRID_GAP = 5;
+    const sf::Vector2f GRID_POS(100.f, 20.f);
+    const sf::Vector2f GRID_PADDING(10.f, 10.f);
+    const int GRID_COLUMNS = 4;
 
-    // font
-    enum FontId {
-        Thin,
-        Regular,
-        Medium,
-        Bold
-    };
-
-    const std::map<re::FontId, std::string> fontPathById = {
-        {re::FontId::Thin, "res/font/Poppins-Light.ttf"},
-        {re::FontId::Regular, "res/font/Poppins-Regular.ttf"},
-        {re::FontId::Medium, "res/font/Poppins-Medium.ttf"},
-        {re::FontId::Bold, "res/font/Poppins-Bold.ttf"}};
-
-} // namespace re
-
-#endif
+    
+} // namespace mr::constants 

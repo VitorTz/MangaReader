@@ -1,40 +1,34 @@
 #include "../../include/util/texture_pool.hpp"
 
 
-std::map<std::string, std::unique_ptr<sf::Texture>> re::TexturePool::textureMap;
+mr::TextureMap mr::TexturePool::textureMap;
 
 
-std::mutex re::TexturePool::m;
+void mr::TexturePool::load(sf::Sprite* sprite, const std::filesystem::path& path) {
+    sf::Texture* t = mr::TexturePool::create(path);
+    sprite->setTexture(*t);
+}
 
 
-void re::TexturePool::load(const std::string& path) {
-    re::TexturePool::m.lock();
-    const bool contains = re::contains(re::TexturePool::textureMap, path);
-    re::TexturePool::m.unlock();
-
-    if (!contains) {
-        re::TexturePool::m.lock();
-        const auto [pair, success] = re::TexturePool::textureMap.insert(
-            {path, std::make_unique<sf::Texture>()}
+sf::Texture* mr::TexturePool::create(const std::filesystem::path& path) {
+    if (mr::TexturePool::textureMap.find(path) == mr::TexturePool::textureMap.end()) {
+        const auto& [pair, success] = mr::TexturePool::textureMap.insert(
+            {
+                path,
+                std::make_unique<sf::Texture>()
+            }  
         );
-        re::TexturePool::m.unlock();
         pair->second->setSmooth(true);
-        pair->second->loadFromFile(path);
+        pair->second->loadFromFile(path);        
+        std::cout << "[TEXTURE CREATED] [" << path << "]\n";
     }
-
-}
-
-void re::TexturePool::load(const std::string& path, sf::Sprite& sprite) {
-    re::TexturePool::load(path);
-    sprite.setTexture(*re::TexturePool::textureMap.at(path));
-}
-
-void re::TexturePool::rmv(const std::string& path) {
-    if (re::contains(re::TexturePool::textureMap, path))
-        re::TexturePool::textureMap.erase(path);
+    return mr::TexturePool::textureMap.at(path).get();
 }
 
 
-void re::TexturePool::rmvAll() {
-    re::TexturePool::textureMap.clear();
+void mr::TexturePool::destroy(const std::filesystem::path& path) {
+    if (mr::TexturePool::textureMap.find(path) != mr::TexturePool::textureMap.end()) {
+        mr::TexturePool::textureMap.erase(path);
+        std::cout << "[TEXTURE DELETED] [" << path << "]\n";
+    }
 }

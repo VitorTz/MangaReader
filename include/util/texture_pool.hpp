@@ -1,31 +1,26 @@
-#ifndef FF58A3E1_400B_4ED2_9C7A_B63555181C3B
-#define FF58A3E1_400B_4ED2_9C7A_B63555181C3B
-#include <SFML/Graphics/Texture.hpp>
-#include <SFML/Graphics/Sprite.hpp>
+#pragma once
+#include "SFML/Graphics.hpp"
+#include <filesystem>
+#include <iostream>
 #include <memory>
 #include <map>
-#include <mutex>
-#include "util.hpp"
 
 
-namespace re {
+namespace mr {
 
+    typedef std::map<std::filesystem::path, std::unique_ptr<sf::Texture>> TextureMap;
 
     class TexturePool {
 
         private:
-            static std::map<std::string, std::unique_ptr<sf::Texture>> textureMap;
-            static std::mutex m;
-            
+            static TextureMap textureMap;
+        
         public:
-            static void load(const std::string& path);
-            static void load(const std::string& path, sf::Sprite& sprite);
-            static void rmv(const std::string& path);
-            static void rmvAll();
+            static void load(sf::Sprite* sprite, const std::filesystem::path& path);
+            static sf::Texture* create(const std::filesystem::path& path);
+            static void destroy(const std::filesystem::path& path);
+        
 
     };
     
-} // namespace re
-
-
-#endif /* FF58A3E1_400B_4ED2_9C7A_B63555181C3B */
+} // namespace mr

@@ -1,24 +1,21 @@
-#include "../../include/scene/scene.hpp"
+#include "../../include/scene.hpp"
+#include <iostream>
 
 
-re::Scene::Scene(
-    const re::SceneId id,
-    const re::ChangeScene& changeScene
+
+mr::Scene::Scene(
+    const mr::SceneId id,
+    const mr::ChangeScene& changeScene 
 ) : id(id),
-    changeScene(changeScene) {
+    change_scene(changeScene) {
 
     }
 
 
-re::Scene::~Scene() = default;
+mr::Scene::~Scene() = default;
 
 
-void re::Scene::update(const float dt) {
-    for (const auto& [componentName, component] : this->componentMap)
-        component->update(dt);
+mr::SceneId mr::Scene::getId() const {
+    return id;
 }
 
-void re::Scene::draw(sf::RenderWindow& window) {
-    for (const auto& [componentName, component] : this->componentMap)
-        component->draw(window);
-}

@@ -1,21 +1,13 @@
-#ifndef EC82ECAB_D022_4804_9E7B_52C1B09DAC5D
-#define EC82ECAB_D022_4804_9E7B_52C1B09DAC5D
-#include <SFML/Window/Keyboard.hpp>
-#include <string>
-#include <memory>
-#include <map>
-#include <set>
-#include "model/manga.hpp"
+#pragma once
+#include "manga.hpp"
 
 
-namespace re::globals {
+namespace mr::globals {
 
-    extern std::map<std::string, std::shared_ptr<re::Manga>> mangaByName;
-    extern std::string currentManga;
-    extern std::set<sf::Keyboard::Key> pressedKeys;
-        
+
+    inline mr::MangaMap mangas;
+    inline std::string manga_reading;
+    inline sf::Vector2i mouse_pos;
+    inline bool mouse_is_clicked;
     
-} // namespace re
-
-
-#endif /* EC82ECAB_D022_4804_9E7B_52C1B09DAC5D */
+} // namespace mr::globals
