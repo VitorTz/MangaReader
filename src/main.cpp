@@ -1,8 +1,8 @@
-#include "../include/window.hpp"
+#include "../include/window/window.hpp"
 
 
-int main() {
+int main(void) {
     mr::Window w;
-    w.run();
+    w.run();    
     return 0;
 }

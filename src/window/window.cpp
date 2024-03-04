@@ -1,4 +1,4 @@
-#include "../include/window.hpp"
+#include "../../include/window/window.hpp"
 
 
 mr::Window::Window(
@@ -10,7 +10,6 @@ mr::Window::Window(
 ) {
     
     window.setFramerateLimit(mr::constants::FPS);
-    
     sf::VideoMode desktop = sf::VideoMode::getDesktopMode();
     window.setPosition(
         sf::Vector2i(
@@ -19,27 +18,21 @@ mr::Window::Window(
         )
     );
 
-    changeScene = [this](const mr::SceneId id) {
+    this->change_scene = [this](const mr::SceneId id) {
         switch (id) {
             case mr::SceneId::LibrarySceneId:
-                this->scene = std::make_unique<mr::LibraryScene>(this->changeScene);
+                this->scene = std::make_unique<mr::Library>(this->change_scene);
                 break;
             case mr::SceneId::ReaderSceneId:
-                this->scene = std::make_unique<mr::ReaderScene>(this->changeScene);
+                this->scene = std::make_unique<mr::Reader>(this->change_scene);
                 break;
             default:
                 break;
         }
     };
-    
-    mr::load_mangas(&mr::globals::mangas);
-    changeScene(mr::main_scene);   
 
-}
+    change_scene(mr::main_scene);
 
-
-mr::Window::~Window() {
-    mr::dump_mangas(&mr::globals::mangas);
 }
 
 
@@ -59,14 +52,12 @@ void mr::Window::handle_input() {
 
 void mr::Window::update() {
     const double dt = clock.restart().asSeconds();
-    mr::globals::mouse_pos = sf::Mouse::getPosition(window);
-    mr::globals::mouse_is_clicked = sf::Mouse::isButtonPressed(sf::Mouse::Left);
     scene->update(dt);
 }
 
 
-void mr::Window::render() {
-    window.clear(mr::constants::SCREEN_BG_COLOR);
+void mr::Window::render() {    
+    window.clear(mr::constants::SCREEN_BG_COLOR);    
     scene->draw(window);
     window.display();
 }

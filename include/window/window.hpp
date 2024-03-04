@@ -1,32 +1,30 @@
 #pragma once
-#include "SFML/Graphics.hpp"
-#include "scene.hpp"
-#include "constants.hpp"
+#include <SFML/Graphics.hpp>
 #include <memory>
-
+#include "../scene/scenes.hpp"
+#include "../constants.hpp"
 
 
 namespace mr {
-
 
     class Window {
 
         private:
             sf::RenderWindow window;
             sf::Clock clock;
-            mr::ChangeScene changeScene;
-            std::unique_ptr<mr::Scene> scene;
+            mr::ChangeScene change_scene;
+            std::unique_ptr<mr::Scene> scene;            
         
         private:
             void handle_input();
             void update();
             void render();
-        
+
         public:
             Window();
-            ~Window();
             void run();
 
     };
-    
-} // namespace mr
+
+
+} 
