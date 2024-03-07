@@ -1,6 +1,4 @@
 #pragma once
 
-
-#include "scene.hpp"
-#include "reader.hpp"
-#include "library.hpp"
+#include "reader_scene.hpp"
+#include "library_scene.hpp"
